@@ -128,6 +128,12 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="01_Debug.cpp" />
+    <ClCompile Include="02_Day2.cpp" />
+    <ClCompile Include="04_Condition.cpp" />
+    <ClCompile Include="04_InputOutput.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="03.Operator.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
