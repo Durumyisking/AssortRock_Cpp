@@ -1,4 +1,4 @@
-#include <iostream>
+ï»¿#include <iostream>
 
 int main()
 {
@@ -6,53 +6,53 @@ int main()
 
     if (x == 50)
     {
-        std::cout << "x´Â 50ÀÔ´Ï´Ù.";
+        std::cout << "xëŠ” 50ìž…ë‹ˆë‹¤.";
     }
     else
     {
-        std::cout << "x´Â 50ÀÌ ¾Æ´Õ´Ï´Ù.";
+        std::cout << "xëŠ” 50ì´ ì•„ë‹™ë‹ˆë‹¤.";
     }
 
 
-    //1 ¿ÞÂÊ 2 ¿À¸¥ÂÊ 3 À§ 4 ¾Æ·¡
+    //1 ì™¼ìª½ 2 ì˜¤ë¥¸ìª½ 3 ìœ„ 4 ì•„ëž˜
 
     int inputDirection = 0;
     inputDirection = 3;
     if (inputDirection == 1)
     {
-        std::cout << "¿ÞÂÊÀ¸·Î 1Ä­ÀÌµ¿" << std::endl;
+        std::cout << "ì™¼ìª½ìœ¼ë¡œ 1ì¹¸ì´ë™" << std::endl;
     }
     else if (inputDirection == 2)
     {
-        std::cout << "¿À¸¥ÂÊÀ¸·Î 1Ä­ÀÌµ¿" << std::endl;
+        std::cout << "ì˜¤ë¥¸ìª½ìœ¼ë¡œ 1ì¹¸ì´ë™" << std::endl;
     }
     else if (inputDirection == 3)
     {
-        std::cout << "À§·ÎÀ¸·Î 1Ä­ÀÌµ¿" << std::endl;
+        std::cout << "ìœ„ë¡œìœ¼ë¡œ 1ì¹¸ì´ë™" << std::endl;
     }
     else if (inputDirection == 4)
     {
-        std::cout << "¾Æ·¡·Î 1Ä­ÀÌµ¿" << std::endl;
+        std::cout << "ì•„ëž˜ë¡œ 1ì¹¸ì´ë™" << std::endl;
     }
 
-    // ¸¸¾à ³»°¡ ¸¸µé·Á´Â °ÔÀÓÀÌ À§ ¿À¸¥ÂÊÀ» ´©¸£¸é ´ë°¢¼± ¿À¸¥ÂÊ À§·Î ¿òÁ÷ÀÌ°Ô ÇÏ°í½Í´Ù ÇÏ¸é
-    // ÀüºÎ if¹®À¸·Î ÇØÁà¾ßÇÔ
+    // ë§Œì•½ ë‚´ê°€ ë§Œë“¤ë ¤ëŠ” ê²Œìž„ì´ ìœ„ ì˜¤ë¥¸ìª½ì„ ëˆ„ë¥´ë©´ ëŒ€ê°ì„  ì˜¤ë¥¸ìª½ ìœ„ë¡œ ì›€ì§ì´ê²Œ í•˜ê³ ì‹¶ë‹¤ í•˜ë©´
+    // ì „ë¶€ ifë¬¸ìœ¼ë¡œ í•´ì¤˜ì•¼í•¨
 
     if (inputDirection == 1)
     {
-        std::cout << "¿ÞÂÊÀ¸·Î 1Ä­ÀÌµ¿" << std::endl;
+        std::cout << "ì™¼ìª½ìœ¼ë¡œ 1ì¹¸ì´ë™" << std::endl;
     }
     if (inputDirection == 2)
     {
-        std::cout << "¿À¸¥ÂÊÀ¸·Î 1Ä­ÀÌµ¿" << std::endl;
+        std::cout << "ì˜¤ë¥¸ìª½ìœ¼ë¡œ 1ì¹¸ì´ë™" << std::endl;
     }
     if (inputDirection == 3)
     {
-        std::cout << "À§·ÎÀ¸·Î 1Ä­ÀÌµ¿" << std::endl;
+        std::cout << "ìœ„ë¡œìœ¼ë¡œ 1ì¹¸ì´ë™" << std::endl;
     }
     if (inputDirection == 4)
     {
-        std::cout << "¾Æ·¡·Î 1Ä­ÀÌµ¿" << std::endl;
+        std::cout << "ì•„ëž˜ë¡œ 1ì¹¸ì´ë™" << std::endl;
     }
 
     return 0;

@@ -24,10 +24,19 @@
     <ClCompile Include="02_Day2.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
-    <ClCompile Include="04_InputOutput.cpp">
+    <ClCompile Include="05_InputOutput.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
     <ClCompile Include="04_Condition.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="06_Loop.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="07_Function.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="08_Array.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
   </ItemGroup>

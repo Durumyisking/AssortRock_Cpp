@@ -1,25 +1,25 @@
-#include <iostream>
+ï»¿#include <iostream>
 
 
 
 int main()
 
 {
-	int i = 400;   // ÃÊ±âÈ­
-	i = 200;      // ´ëÀÔ
+	int i = 400;   // ì´ˆê¸°í™”
+	i = 200;      // ëŒ€ìž…
 
 	char ch = 'A';
-	// int char = 0;   // ÀÌ¹Ì ¿¹¾àµÇ¾îÀÖ´Â Å°¿öµå´Â ½Äº°ÀÚ(ÀÌ¸§)ÀÌ µÉ ¼ö°¡ ¾ø´Ù.
-	char CH = 'A';      // ´ë¼Ò¹®ÀÚ´Â ±¸º°ÀÌ µÈ´Ù.
-	//char °¡³ª´Ù = 'A';   // ÀÌ¸§Àº ´ë¼Ò¹®ÀÚ, ¼ýÀÚ, ¹× ¹®ÀÚ·Î¸¸ ±¸¼ºÀÌ °¡´ÉÇÏ´Ù
-	char c_H = 'A';      // ´ë¼Ò¹®ÀÚ¿Í ÇÔ²² _´Â ÀÌ¸§À¸·Î »ç¿ëÀÌ °¡´ÉÇÏ´Ù.
+	// int char = 0;   // ì´ë¯¸ ì˜ˆì•½ë˜ì–´ìžˆëŠ” í‚¤ì›Œë“œëŠ” ì‹ë³„ìž(ì´ë¦„)ì´ ë  ìˆ˜ê°€ ì—†ë‹¤.
+	char CH = 'A';      // ëŒ€ì†Œë¬¸ìžëŠ” êµ¬ë³„ì´ ëœë‹¤.
+	//char ê°€ë‚˜ë‹¤ = 'A';   // ì´ë¦„ì€ ëŒ€ì†Œë¬¸ìž, ìˆ«ìž, ë° ë¬¸ìžë¡œë§Œ êµ¬ì„±ì´ ê°€ëŠ¥í•˜ë‹¤
+	char c_H = 'A';      // ëŒ€ì†Œë¬¸ìžì™€ í•¨ê»˜ _ëŠ” ì´ë¦„ìœ¼ë¡œ ì‚¬ìš©ì´ ê°€ëŠ¥í•˜ë‹¤.
 
-	// ¹®ÀÚÀ¯Çü
+	// ë¬¸ìžìœ í˜•
 	// literal
-	char ch_ = 'A'; // ÀÌ ÄÚµå¿¡¼­ 'A' ´Â º¯ÇÏÁö ¾Ê´Â ±ÛÀÚÀÓ _ch´Â º¯ÇÏ´Â 'A'¶ó´Â°Ç ¿¬»êÀ¸·Î ¹Ù²Ü¼ö°¡ ¾øÀ½
+	char ch_ = 'A'; // ì´ ì½”ë“œì—ì„œ 'A' ëŠ” ë³€í•˜ì§€ ì•ŠëŠ” ê¸€ìžìž„ _chëŠ” ë³€í•˜ëŠ” 'A'ë¼ëŠ”ê±´ ì—°ì‚°ìœ¼ë¡œ ë°”ê¿€ìˆ˜ê°€ ì—†ìŒ
 
-	// ºÎµ¿ ¼Ò¼öÁ¡ À¯Çü
-	// Á¤¼ö ½Ç¼ö (¼Ò¼ö Ç¥Çö)
+	// ë¶€ë™ ì†Œìˆ˜ì  ìœ í˜•
+	// ì •ìˆ˜ ì‹¤ìˆ˜ (ì†Œìˆ˜ í‘œí˜„)
 	float pi = 3.141592f;
 
 	// true(1) false(0)
@@ -27,16 +27,16 @@ int main()
 	bool F = false;
 
 
-	signed int m_ch; // == int g_ch; »ç½ÇÀº ¾Õ¿¡ signed°¡ ºÙ¾îÀÖ´Ù. (¼Ò¼ö´Â ºÒ°¡´É)
-	unsigned int g_ch; // ¾ç¼ö¸¸ ¾µ°ÅÀÓ
+	signed int m_ch; // == int g_ch; ì‚¬ì‹¤ì€ ì•žì— signedê°€ ë¶™ì–´ìžˆë‹¤. (ì†Œìˆ˜ëŠ” ë¶ˆê°€ëŠ¥)
+	unsigned int g_ch; // ì–‘ìˆ˜ë§Œ ì“¸ê±°ìž„
 
 
-	// Ãß°¡±â´É
-	// ÀÚ·áÇü ÀÚµ¿ À¯Ãß
-	auto num = 8888888888888888888; // ÀÎÅÚ¸®Àü½º°¡ ÀÚµ¿À¸·Î µ¥ÀÌÅÍÅ¸ÀÔ À¯ÃßÇØ¼­ »ç¿ë
+	// ì¶”ê°€ê¸°ëŠ¥
+	// ìžë£Œí˜• ìžë™ ìœ ì¶”
+	auto num = 8888888888888888888; // ì¸í…”ë¦¬ì „ìŠ¤ê°€ ìžë™ìœ¼ë¡œ ë°ì´í„°íƒ€ìž… ìœ ì¶”í•´ì„œ ì‚¬ìš©
 
-	// ÀÚ·áÇü Ãß·Ð
-	// ³»°¡ º¯¼ö Å¸ÀÔ ±â¾ï ¾È³¯¶§ decltype(º¯¼ö¸í) ³ÖÀ¸¸é ÀÚ·áÇüÀ» return;
+	// ìžë£Œí˜• ì¶”ë¡ 
+	// ë‚´ê°€ ë³€ìˆ˜ íƒ€ìž… ê¸°ì–µ ì•ˆë‚ ë•Œ decltype(ë³€ìˆ˜ëª…) ë„£ìœ¼ë©´ ìžë£Œí˜•ì„ return;
 	decltype(ch) character;
 
 	return 0;
