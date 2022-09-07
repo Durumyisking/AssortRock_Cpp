@@ -25,5 +25,20 @@ int main()
 	}
 
 
+	// 2차원배열
+	{
+		int iArr[5][5] = {};
+
+		for (size_t i = 0; i < 5; ++i)
+		{
+			for (size_t j = 0; j < 5; ++j)
+			{
+				std::cout << iArr[i][j];
+			}
+		}
+
+	}
+
+
 	return 0;
 }
