@@ -52,6 +52,13 @@ int main()
 		z++;
 	} while (z < 10);
 
+	// 향상된 for문
+	int arr[5] = {0,1,2,3,4};
+	for (int indexValue : arr)
+	{
+		// 이렇게하면 indexValue에 arr의 값을 인덱스0부터 순회함
+		cout << indexValue << endl;
+	}
 
 
 	// 전역변수는 어디서 쓰나 다 똑같은놈
