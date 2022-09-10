@@ -157,7 +157,10 @@
     <ClCompile Include="11_Recursive.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
     </ClCompile>
-    <ClCompile Include="12_Pointer.cpp" />
+    <ClCompile Include="12_Pointer.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="13_Reference.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="03.Operator.cpp">
