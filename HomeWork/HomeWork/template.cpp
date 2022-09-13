@@ -13,7 +13,7 @@ using namespace std;
 int main()
 {
 
-	// Level6
+	// Level
 
 	// 1¹ø
 	{
