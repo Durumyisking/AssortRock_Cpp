@@ -3,6 +3,8 @@
 
 using namespace std;
 
+
+
 int main()
 {
 	// reference
@@ -16,7 +18,6 @@ int main()
 	num = 300;
 	*(pNum) = 500;
 	num2 = 800;
-
 
 
 	return 0;
