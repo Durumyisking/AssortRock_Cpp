@@ -57,6 +57,9 @@
     <ClCompile Include="14_DynamicAllocator.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
+    <ClCompile Include="15_LinkedList.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="03.Operator.cpp">
