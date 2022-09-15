@@ -54,9 +54,32 @@ void PushBack(LinkedList* _pList, int _iData)
 	++_pList->iCount;
 }
 
-void PushFront()
+void insertNode(LinkedList* _pList, int _iData, int _iTarget)
 {
+	// 숙제
+	// list가 비어있을때 (Head == null)
+	// 맨 마지막 노드에 삽입되었을때
 
+
+	Node* newNode = new Node();
+	newNode->iData = _iData;
+	newNode->pNext = nullptr;
+	newNode->pPrev = nullptr;
+
+	Node* pNode = _pList->pHead;
+		while (nullptr != pNode)
+		{
+			if (_iTarget == pNode->iData)
+			{
+				newNode->pNext = pNode->pNext;
+				pNode->pNext->pPrev = newNode;
+				pNode->pNext = newNode;
+				newNode->pPrev = pNode;				
+				break;
+			}
+			pNode = pNode->pNext;
+		}
+		++_pList->iCount;
 }
 
 // 노드 한개를 release
@@ -93,10 +116,11 @@ void release_list(LinkedList* _pList)
 	Node* pNode = _pList->pHead;
 	while (nullptr != pNode)
 	{
+		Node* pNextNode = pNode->pNext; 
+		delete pNode;
+		pNode = nullptr;
 
-
-
-		pNode = pNode->pNext;
+		pNode = pNextNode;
 	}
 }
 
@@ -125,8 +149,10 @@ int main()
 
 	for (int i = 0; i < 5; ++i)
 	{
+		//PushBack(&list, i);
 		PushBack(&list, i);
 	}
+	insertNode(&list, 100, 3);
 
 	release_list(&list);
 

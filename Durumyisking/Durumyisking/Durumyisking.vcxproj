@@ -166,7 +166,10 @@
     <ClCompile Include="14_DynamicAllocator.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
     </ClCompile>
-    <ClCompile Include="15_LinkedList.cpp" />
+    <ClCompile Include="15_LinkedList.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="16_Class.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="03.Operator.cpp">
