@@ -55,7 +55,6 @@ void PushFront(List* _List, int _iData)
 		pNewNode->pNext = _List->pBegin;
 		_List->pBegin->pPrev = pNewNode;
 		_List->pBegin = pNewNode;
-
 	}
 	++_List->iCount;
 }
