@@ -35,6 +35,23 @@ int add(int _a, int _b)
 	return result;
 }
 
+// 함수 템플릿
+// 여기서 T는 자료형 type
+template <typename T>
+T add(T a, T b)
+{
+	return a + b;
+}
+
+// 템플릿 특수화
+template <>
+float add(float a, float b)
+{
+	// 이럼 add함수를 반환형 float 인자 (float, float) 쓸때는 여기로 옴
+	// 안쓰는 기능임ㅋ
+	return (int)(a + b);
+}
+
 	
 int main()
 {
@@ -44,6 +61,15 @@ int main()
 	SIZE d = -2; // unsigned int에 음수 대입시 -1 비트를 양수일때로 읽음
 
 	int result = add(5, 3);
+
+	
+	// 템플릿
+	char ch = static_cast<char>(65); // 우리가 사용하는 static_cast도 <>안에 T가 들어가있음
+
+	// add<T>(매개인자)
+	float	fSum = add<float>(3.0f, 0.14159f);
+	int		iSum = add<int>(5, 5);
+
 
 	return 0;
 

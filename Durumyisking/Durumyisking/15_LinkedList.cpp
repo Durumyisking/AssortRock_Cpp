@@ -56,14 +56,10 @@ void PushBack(LinkedList* _pList, int _iData)
 
 void insertNode(LinkedList* _pList, int _iData, int _iTarget)
 {
-	// 숙제
-	// list가 비어있을때 (Head == null)
-	// 맨 마지막 노드에 삽입되었을때
-
 
 	Node* newNode = new Node();
 	newNode->iData = _iData;
-	newNode->pNext = nullptr;
+	newNode->pNext = nullptr;	
 	newNode->pPrev = nullptr;
 
 	Node* pNode = _pList->pHead;

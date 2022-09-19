@@ -59,6 +59,45 @@ void PushFront(List* _List, int _iData)
 	++_List->iCount;
 }
 
+void InputNode(LinkedList* _list, int _iData, int _iTarget)
+{
+	Node* pNewNode = new Node();
+	pNewNode->iData = _iData;
+	pNewNode->pNext = nullptr;
+	pNewNode->pPrev = nullptr;
+	
+	if (nullptr == _list->pBegin)
+	{
+		_list->pBegin = pNewNode;
+	}
+	else
+	{
+		Node* pNode = _list->pBegin;
+		while (nullptr != pNode)
+		{
+			if (_iTarget == pNode->iData)
+			{
+				Node* pNextNode = pNode->pNext;
+				if (nullptr != pNode->pNext)
+				{
+					pNewNode->pNext = pNextNode;
+					pNextNode->pPrev = pNewNode;
+					pNode->pNext = pNewNode;
+					pNewNode->pPrev = pNode;
+				}
+				else
+				{
+					pNode->pNext = pNewNode;
+					pNewNode->pPrev = pNode;
+				}
+			}
+
+			pNode = pNode->pNext;
+		}
+	}
+	++_list->iCount;
+}
+
 void ReleaseNode(Node* _pNode)
 {		
 	if (nullptr == _pNode)
@@ -87,7 +126,8 @@ int main()
 		PushFront(&list, i);
 
 
-
+	InputNode(&list, 10, 1);
+	InputNode(&list, 10, 0);
 
 
 

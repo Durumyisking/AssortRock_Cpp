@@ -11,6 +11,33 @@ void print(int* arr)
 	}
 }
 
+int addition(int a, int b)
+{
+	return a + b;
+}
+
+int subtraction(int a, int b)
+{
+	return a - b;
+}
+
+void voidprint()
+{
+
+}
+
+
+// 함수의 인자로 함수포인터변수를 사용하기도 함
+int operation(int x, int y, int(*funcCall)(int, int))
+{
+	int g = 0;
+	g = funcCall(x, y);
+
+	return g;
+}
+
+
+
 int main()
 {
 	//포인터
@@ -115,6 +142,20 @@ int main()
 		,&arr2D[2][0]
 		,&arr2D[3][0]
 	};
+
+
+	// 함수 포인터 변수
+	int (*minus) (int, int); // 반환값이 int 매개인자가 int, int인 함수를 받을 수 있는 pointer임
+
+	minus = subtraction;
+
+	void (*print)() = voidprint;
+
+	// 매개인자로 함수포인터를 가진 함수 사용
+	int sub, add;
+	sub = operation(5, 5, subtraction);
+	add = operation(5, 5, addition);
+
 
 	return 0;
 }

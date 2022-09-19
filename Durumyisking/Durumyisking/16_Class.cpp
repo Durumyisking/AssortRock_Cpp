@@ -103,6 +103,31 @@ void g_inputData(Node* _pNode, int _iData)
 }
 
 
+// 클래스/구조체 템플릿
+template <typename T>
+class MyVector
+{
+public:
+	MyVector()
+	{
+
+	}
+	~MyVector()
+	{
+
+	}
+
+private:
+	T x;
+	T y;
+};
+
+
+
+
+
+
+
 int main()
 {
 	LinkedList list;
@@ -112,7 +137,7 @@ int main()
 	list.inputData(3);
 
 	Node Node1; // Node1의 1번 생성자 호출
-	Node Node2 = new Node(5); // Node2의 2번 생성자 호출
+	Node Node2(5); // Node2의 2번 생성자 호출
 
 	cout << Node2.iData;
 
@@ -127,6 +152,14 @@ int main()
 	// 동적할당한 클래스는 delete로 메모리 해제할때 소멸자 호출됨
 	delete pNode2; // 이때 pNode2의 소멸자 호출
 	delete pNode1; // 이때 pNode1의 소멸자 호출
+
+	// 템플릿 클래스
+	MyVector <int>	 iVec;
+	MyVector <float> iVec;
+
+
+
+
 
 	return 0; // Node 2번생성자 호출 이후 Node의 1번 생성자 호출
 }
