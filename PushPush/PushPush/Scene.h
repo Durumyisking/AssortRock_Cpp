@@ -11,16 +11,14 @@ public:
 	virtual ~CScene();
 
 public:
-	void Init(CApplication* _pApplication);
-	virtual void Init() = 0;
-	virtual void Update();
-	virtual void Render();
-	virtual void Destroy();
+	virtual void Init()		= 0;
+	virtual void Update()	= 0;
+	virtual void Render()	= 0;
+	virtual void Destroy()	= 0;
 	
 
 protected:
-	CApplication* m_pApplication;
-	CMap m_Map;
+	CMap* stage1;
 
 };
 

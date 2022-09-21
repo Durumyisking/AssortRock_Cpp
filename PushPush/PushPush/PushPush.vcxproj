@@ -144,6 +144,7 @@
     <ClCompile Include="GlobalFunc.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Map.cpp" />
+    <ClCompile Include="Player.cpp" />
     <ClCompile Include="Scene.cpp" />
     <ClCompile Include="Scene_Dead.cpp" />
     <ClCompile Include="Scene_Play.cpp" />
@@ -157,6 +158,7 @@
     <ClInclude Include="GlobalFunc.h" />
     <ClInclude Include="Map.h" />
     <ClInclude Include="MyMath.h" />
+    <ClInclude Include="Player.h" />
     <ClInclude Include="Scene.h" />
     <ClInclude Include="Scene_Dead.h" />
     <ClInclude Include="Scene_Play.h" />

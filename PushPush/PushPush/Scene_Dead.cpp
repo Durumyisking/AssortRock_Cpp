@@ -15,7 +15,9 @@ void CScene_Dead::Init()
 
 void CScene_Dead::Update()
 {
+	Sleep(3000);
 
+	CApplication::GetInst()->SetIsRunning(false);
 
 }
 

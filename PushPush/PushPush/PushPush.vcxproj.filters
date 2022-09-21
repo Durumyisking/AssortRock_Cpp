@@ -23,6 +23,9 @@
     <Filter Include="Scene">
       <UniqueIdentifier>{d11426de-a8db-464e-86ed-5b9f0936a905}</UniqueIdentifier>
     </Filter>
+    <Filter Include="GameObject\Player">
+      <UniqueIdentifier>{e795fc7c-6816-44b5-bdf5-2a4d2fdd9e7f}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Application.cpp">
@@ -49,6 +52,9 @@
     </ClCompile>
     <ClCompile Include="Scene_Dead.cpp">
       <Filter>Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="Player.cpp">
+      <Filter>GameObject\Player</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -84,6 +90,9 @@
     </ClInclude>
     <ClInclude Include="Scene_Dead.h">
       <Filter>Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="Player.h">
+      <Filter>GameObject\Player</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

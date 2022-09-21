@@ -14,12 +14,12 @@ int main()
 	setlocale(LC_ALL, "");
 
 
-	application.Init(); //				1. init
+	application.GetInst()->Init();				//	1. init
 
-	while (application.GetIsRunning())
+	while (application.GetInst()->GetIsRunning())
 	{
-		application.Update(); //		2. update
-		application.Rendering(); //		3. rendering
+		application.GetInst()->Update();	//		2. update
+		application.GetInst()->Rendering(); //		3. rendering
 	}
-	application.Destroy(); //			4. end
+	application.GetInst()->Destroy();		//		4. end
 }

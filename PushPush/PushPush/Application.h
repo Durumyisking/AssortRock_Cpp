@@ -7,6 +7,17 @@ class CScene;
 
 class CApplication
 {
+// Singleton Pattern
+public:
+	static CApplication* GetInst()
+	{
+		if (m_Instance == nullptr)
+		{
+			m_Instance = new CApplication();
+		}
+		return m_Instance;
+	}
+
 
 public:
 	CApplication();
@@ -20,9 +31,17 @@ public:
 
 public:
 	bool GetIsRunning() { return m_bIsRunning; }
+	void SetIsRunning(bool _bIsRunning) { m_bIsRunning = _bIsRunning; }
 
 public:
 	void ChangeScene(SCENE_TYPE _eType);
+
+private:
+	// private 함수는 소문자로 이름 지으면 좋음
+	void clear();
+
+private:
+	static CApplication* m_Instance;
 
 
 private:

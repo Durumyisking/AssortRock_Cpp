@@ -1,8 +1,5 @@
 #pragma once
 
-#define SIZE_MAP_Y 30
-#define SIZE_MAP_X 24
-
 
 enum class WINCOLOR
 {

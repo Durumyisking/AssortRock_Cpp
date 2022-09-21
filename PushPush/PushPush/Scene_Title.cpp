@@ -27,7 +27,7 @@ void CScene_Title::Update()
 		switch (chInput)
 		{
 		case '\r':
-			m_pApplication->ChangeScene(SCENE_TYPE::PLAY);
+			CApplication::GetInst()->ChangeScene(SCENE_TYPE::PLAY);
 			break;
 		default:
 			break;
