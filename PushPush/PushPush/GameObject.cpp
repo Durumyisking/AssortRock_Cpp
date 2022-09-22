@@ -9,3 +9,11 @@ CGameObject::CGameObject()
 CGameObject::~CGameObject()
 {
 }
+
+void CGameObject::Update()
+{
+}
+
+void CGameObject::Render()
+{
+}

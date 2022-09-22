@@ -12,6 +12,7 @@ public:
 
 public:
     virtual void Update() override;
+    virtual void Render() override;
 
     void SetMap(CMap* _pMap);
 

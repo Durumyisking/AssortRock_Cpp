@@ -41,6 +41,7 @@ void CApplication::Update()
 void CApplication::Rendering()
 {
 	system("cls");													// 화면 클리어
+
 	m_arrScene[static_cast<UINT>(m_eCurrentScene)]->Render();		// 현재씬 렌더링
 
 	Sleep(200);														// cpu 0.5초동안 멈춤

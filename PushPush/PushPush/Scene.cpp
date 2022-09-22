@@ -1,7 +1,7 @@
 #include "Scene.h"
 
 CScene::CScene()
-	: stage1(nullptr)
+	: m_pMap(nullptr)
 {
 }
 

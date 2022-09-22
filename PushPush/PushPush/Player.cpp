@@ -2,7 +2,9 @@
 #include "Map.h"
 
 CPlayer::CPlayer()
+	: m_pMap(nullptr)
 {
+	m_wcRender = L'¢½';
 }
 
 CPlayer::~CPlayer()
@@ -12,6 +14,10 @@ CPlayer::~CPlayer()
 void CPlayer::Update()
 {
 	inputprocess();
+}
+
+void CPlayer::Render()
+{
 }
 
 void CPlayer::inputprocess()

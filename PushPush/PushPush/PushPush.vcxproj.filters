@@ -14,9 +14,6 @@
     <Filter Include="Common">
       <UniqueIdentifier>{d48035f6-9b12-4cce-9338-66319f0ccbf3}</UniqueIdentifier>
     </Filter>
-    <Filter Include="GameObject\Map">
-      <UniqueIdentifier>{ad0d9081-d959-4687-81cf-1aa123e5148f}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Module">
       <UniqueIdentifier>{6015a681-8579-4668-9223-08e869c7ce47}</UniqueIdentifier>
     </Filter>
@@ -25,6 +22,21 @@
     </Filter>
     <Filter Include="GameObject\Player">
       <UniqueIdentifier>{e795fc7c-6816-44b5-bdf5-2a4d2fdd9e7f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GameObject\Stone">
+      <UniqueIdentifier>{1a704547-d1e1-466b-b22b-ed97317fc2a3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GameObject\House">
+      <UniqueIdentifier>{64b285c3-63ef-4a95-b432-346c2805e30f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Map">
+      <UniqueIdentifier>{ad0d9081-d959-4687-81cf-1aa123e5148f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GameObject\Ball">
+      <UniqueIdentifier>{5d81fd53-5ba3-4995-838e-d5684814d55a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Data">
+      <UniqueIdentifier>{046e5057-d0f6-4a55-b5df-58d8dcfe0646}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -36,7 +48,7 @@
       <Filter>GameObject</Filter>
     </ClCompile>
     <ClCompile Include="Map.cpp">
-      <Filter>GameObject\Map</Filter>
+      <Filter>Map</Filter>
     </ClCompile>
     <ClCompile Include="Scene.cpp">
       <Filter>Scene</Filter>
@@ -56,6 +68,18 @@
     <ClCompile Include="Player.cpp">
       <Filter>GameObject\Player</Filter>
     </ClCompile>
+    <ClCompile Include="Ball.cpp">
+      <Filter>GameObject\Ball</Filter>
+    </ClCompile>
+    <ClCompile Include="Stone.cpp">
+      <Filter>GameObject\Stone</Filter>
+    </ClCompile>
+    <ClCompile Include="House.cpp">
+      <Filter>GameObject\House</Filter>
+    </ClCompile>
+    <ClCompile Include="Stage.cpp">
+      <Filter>Data</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Application.h">
@@ -71,7 +95,7 @@
       <Filter>Common</Filter>
     </ClInclude>
     <ClInclude Include="Map.h">
-      <Filter>GameObject\Map</Filter>
+      <Filter>Map</Filter>
     </ClInclude>
     <ClInclude Include="define.h">
       <Filter>Common</Filter>
@@ -93,6 +117,18 @@
     </ClInclude>
     <ClInclude Include="Player.h">
       <Filter>GameObject\Player</Filter>
+    </ClInclude>
+    <ClInclude Include="Ball.h">
+      <Filter>GameObject\Ball</Filter>
+    </ClInclude>
+    <ClInclude Include="Stone.h">
+      <Filter>GameObject\Stone</Filter>
+    </ClInclude>
+    <ClInclude Include="House.h">
+      <Filter>GameObject\House</Filter>
+    </ClInclude>
+    <ClInclude Include="Stage.h">
+      <Filter>Data</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

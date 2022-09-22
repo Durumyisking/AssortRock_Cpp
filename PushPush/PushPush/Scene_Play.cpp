@@ -3,26 +3,29 @@
 #include "Map.h"
 
 #include "Player.h"
+#include "Ball.h"
 
 CScene_Play::CScene_Play()
 	: m_pPlayer(nullptr)
+	, m_Stage(nullptr)
 {
 }
 
 CScene_Play::~CScene_Play()
 {
+	delete m_Stage;
 }
 
 void CScene_Play::Init()
 {
-	InitPlayer();
-	InitMap(m_pPlayer);
+	initplayer();
+	initmap();
+
 }
 
 void CScene_Play::Update()
 {
 	m_pPlayer->Update();
-//	stage1->SetObj(m_pPlayer->GetPos(), m_pPlayer->GetRenderwc());
 
 	if (_kbhit())
 	{
@@ -49,47 +52,33 @@ void CScene_Play::Render()
 	_SetCursor(12, 8); wcout <<		L"└───────────────────────┘" << endl;
 	_SetCursor(12, 20); wcout <<	L"Press Enter to be Dead !?" << endl;
 
-	stage1->Render();
+	m_pMap->Render();
 
 }
 
 void CScene_Play::Destroy()
 {
-	delete stage1;
+	delete m_pMap;
 }
 
-void CScene_Play::InitMap(CPlayer* _pPlayer)
+void CScene_Play::initmap()
 {
-	stage1 = new CMap(8, 8);
-	stage1->SetPlayer(_pPlayer);
-	m_pPlayer->SetMap(stage1);
-	wstring Stage1Data = L"";
+	m_pMap = new CMap(8, 8);
+	m_pMap->AddGameObject(m_pPlayer);
+	m_pPlayer->SetMap(m_pMap);
 
-	//Stage1Data += L"　　■■■　　　";
-	//Stage1Data += L"　　■　■　　　";
-	//Stage1Data += L"　　■　■■■■";
-	//Stage1Data += L"■■■　　　　■";
-	//Stage1Data += L"■　　　　■■■";
-	//Stage1Data += L"■■■■　■　　";
-	//Stage1Data += L"　　　■　■　　";
-	//Stage1Data += L"　　　■■■　　";
+	CGameObject* pBallObj = new CBall(Pos(3, 4));
+	m_pMap->AddGameObject(pBallObj);
 
-	Stage1Data += L"　　▩▩▩　　　";
-	Stage1Data += L"　　▩　▩　　　";
-	Stage1Data += L"　　▩　▩▩▩▩";
-	Stage1Data += L"▩▩▩　　　　▩";
-	Stage1Data += L"▩　　　　▩▩▩";
-	Stage1Data += L"▩▩▩▩　▩　　";
-	Stage1Data += L"　　　▩　▩　　";
-	Stage1Data += L"　　　▩▩▩　　";
-
-	stage1->Init(Stage1Data);
-
+	// stage메모장 파일을 읽어서 그걸 맵으로 쓸꺼임
+	CStage* stage = new CStage();
+	stage->SetMap(m_pMap);
+	stage->Load();
+	//m_pMap->Init();
 }
 
-void CScene_Play::InitPlayer()
+void CScene_Play::initplayer()
 {
 	m_pPlayer = new CPlayer();
-	m_pPlayer->SetPos(Vector2{ 4,4 });
-	m_pPlayer->SetRenderwc(L'♡');
+	m_pPlayer->SetPos(Vector2(4, 4));
 }

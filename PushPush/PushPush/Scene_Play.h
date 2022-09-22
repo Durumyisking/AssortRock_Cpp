@@ -1,5 +1,6 @@
 #pragma once
 #include "Scene.h"
+#include "Stage.h"
 
 class CPlayer;
 
@@ -16,10 +17,13 @@ public:
 	virtual void Render() override;
 	virtual void Destroy() override;
 
-	void InitMap(CPlayer* _pPlayer);
-	void InitPlayer();
+private:
+	void initmap();
+	void initplayer();
 
 private:
-	CPlayer* m_pPlayer;
+	CPlayer*	m_pPlayer;
+	CStage*		m_Stage;
+//	CStage*		m_Stage[3];
 };
 

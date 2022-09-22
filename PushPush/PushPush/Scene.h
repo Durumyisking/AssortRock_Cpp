@@ -18,7 +18,7 @@ public:
 	
 
 protected:
-	CMap* stage1;
+	CMap* m_pMap;
 
 };
 

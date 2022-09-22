@@ -14,10 +14,5 @@ public:
 	virtual void Render() override;
 	virtual void Destroy() override;
 
-private:
-	random_device	rd;
-	mt19937			gen;
-	uniform_int_distribution<int> dis;
-
 };
 

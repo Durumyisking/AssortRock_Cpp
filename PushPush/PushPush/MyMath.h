@@ -14,4 +14,12 @@ typedef struct Vector2
 		:ix(_ix), iy(_iy)
 	{
 	}
+
+public:
+	Vector2 operator=(Vector2 _vOther)
+	{
+		this->ix = _vOther.ix;
+		this->iy = _vOther.iy;
+		return *this;
+	}
 }Pos;
