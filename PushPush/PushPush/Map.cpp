@@ -1,4 +1,6 @@
 #include "Map.h"
+#include "Ball.h"
+#include "House.h"
 
 CMap::CMap()
 	: m_pWall(nullptr)
@@ -53,14 +55,13 @@ CMap::~CMap()
 
 }
 
-void CMap::Init(wstring& _strWall)
+void CMap::Init()
 {
-	int idx = 0;
-	for (size_t y = 0; y < m_sizeY; y++)
+	for (UINT y = 0; y < m_sizeY; ++y)
 	{
-		for (size_t x = 0; x < m_sizeX; ++x)
+		for (UINT x = 0; x < m_sizeX; ++x)
 		{
-			m_pWall[y][x] = _strWall[idx++];
+			CheckMap(x, y, m_pWall[y][x]);
 		}
 	}
 }
@@ -80,7 +81,7 @@ void CMap::Render()
 		for (UINT x = 0; x < m_sizeX; ++x)
 		{
 			SetColor(WINCOLOR::DARK_YELLOW);
-			_SetCursor(static_cast<short>(x * 2 + 19), static_cast<short>(y + 10));
+			_SetCursor(static_cast<short>(x * 2 + PRINT_GAP_X), static_cast<short>(y + 10));
 			wcout << m_pWall[y][x];
 			// 현재 렌더링 위치가 Object 위치면			
 			SetGameObject(x, y);
@@ -92,6 +93,7 @@ void CMap::Render()
 /** _ix와 _iy와 GameObject의 위치가 일치하면 GameObject를 배치합니다*/
 void CMap::SetGameObject(UINT _ix, UINT _iy)
 {
+
 	for (size_t i = 0; i < 128; i++)
 	{
 		if (nullptr != m_pGameObjects[i])
@@ -99,7 +101,7 @@ void CMap::SetGameObject(UINT _ix, UINT _iy)
 			if ((m_pGameObjects[i]->GetPos().ix == _ix) && (m_pGameObjects[i]->GetPos().iy == _iy))
 			{
 				SetColor(WINCOLOR::VIOLET);
-				_SetCursor(static_cast<short>(_ix * 2 + 19), static_cast<short>(_iy + 10));
+				_SetCursor(static_cast<short>(_ix * 2 + PRINT_GAP_X), static_cast<short>(_iy + 10));
 				wcout << m_pGameObjects[i]->GetRenderwc();
 			}
 		}
@@ -111,6 +113,27 @@ void CMap::SetStage(int _iy, int _ix, wchar_t _wcInput)
 	m_pWall[_iy][_ix] = _wcInput;
 }
 
+void CMap::CheckMap(int _iy, int _ix, wchar_t _wc)
+{
+	if (L'♡' == _wc)
+	{
+		m_pPlayer = new CPlayer();
+		m_pPlayer->SetPos(Pos(_ix, _iy));
+		m_pPlayer->SetMap(this);
+		AddGameObject(m_pPlayer);
+	}
+	else if (L'●' == _wc)
+	{
+		CBall* pBall = new CBall(Pos(_iy, _ix));
+		pBall->SetMap(this);
+		AddGameObject(pBall);
+	}
+	else if (L'♨' == _wc)
+	{
+
+	}
+}
+
 
 
 void CMap::AddGameObject(CGameObject* _pGameObj)
@@ -120,8 +143,22 @@ void CMap::AddGameObject(CGameObject* _pGameObj)
 		if (nullptr == m_pGameObjects[i])
 		{
 			m_pGameObjects[i] = _pGameObj;
+			break;
 		}
 	}
+}
+
+CGameObject* CMap::GetObj(int _ix, int _iy)
+{
+	for (size_t i = 0; i < 128; i++)
+	{
+		if (nullptr != m_pGameObjects[i])
+		{
+			if(_ix == m_pGameObjects[i]->GetPos().ix && _iy == m_pGameObjects[i]->GetPos().iy)
+				return m_pGameObjects[i];
+		}
+	}
+	return nullptr;
 }
 
 

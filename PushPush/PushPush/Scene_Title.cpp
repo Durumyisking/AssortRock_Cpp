@@ -27,6 +27,7 @@ void CScene_Title::Update()
 		switch (chInput)
 		{
 		case '\r':
+			system("cls");													// 화면 클리어
 			CApplication::GetInst()->ChangeScene(SCENE_TYPE::PLAY);
 			break;
 		default:

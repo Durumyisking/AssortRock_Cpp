@@ -12,14 +12,18 @@ public:
 	~CMap();
 
 public:
-	void Init(wstring& _strWall);
+	void Init();
 	void Update();
 	void Render();
 
 	void SetPlayer(CPlayer* _pPlayer) { m_pPlayer = _pPlayer; }
+	CPlayer* GetPlayer() const { return m_pPlayer; }
 	void SetGameObject(UINT _ix, UINT _iy);
 	void SetStage(int _iy, int _ix, wchar_t _wcInput);
+	void CheckMap(int _iy, int _ix, wchar_t _wc);
 	void AddGameObject(CGameObject* _pGameObj);
+
+	CGameObject* GetObj(int _ix, int _iy);
 
 	wchar_t** GetWall() { return m_pWall; }
 

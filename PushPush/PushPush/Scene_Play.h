@@ -19,7 +19,6 @@ public:
 
 private:
 	void initmap();
-	void initplayer();
 
 private:
 	CPlayer*	m_pPlayer;

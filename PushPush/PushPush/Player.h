@@ -14,13 +14,10 @@ public:
     virtual void Update() override;
     virtual void Render() override;
 
-    void SetMap(CMap* _pMap);
 
 private:
     void inputprocess();
 
 
-private:
-    CMap* m_pMap;
 };
 

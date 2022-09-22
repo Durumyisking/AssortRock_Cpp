@@ -2,7 +2,6 @@
 #include "Map.h"
 
 CPlayer::CPlayer()
-	: m_pMap(nullptr)
 {
 	m_wcRender = L'¢½';
 }
@@ -29,20 +28,16 @@ void CPlayer::inputprocess()
 		switch (input)
 		{
 		case 'W': case 'w':
-			if(L'¢Ì' != WallData[m_vPos.iy - 1][m_vPos.ix])
-				--m_vPos.iy;
+			movecheck(WallData[m_vPos.iy - 1][m_vPos.ix], DIR::UP);
 			break;
 		case 'S': case 's':
-			if (L'¢Ì' != WallData[m_vPos.iy + 1][m_vPos.ix])
-				++m_vPos.iy;
+			movecheck(WallData[m_vPos.iy + 1][m_vPos.ix], DIR::DOWN);
 			break;
 		case 'A': case 'a':
-			if (L'¢Ì' != WallData[m_vPos.iy][m_vPos.ix - 1])
-				--m_vPos.ix;
+			movecheck(WallData[m_vPos.iy][m_vPos.ix - 1], DIR::LEFT);
 			break;
 		case 'D': case 'd':
-			if (L'¢Ì' != WallData[m_vPos.iy][m_vPos.ix + 1])
-				++m_vPos.ix;
+			movecheck(WallData[m_vPos.iy][m_vPos.ix + 1], DIR::RIGHT);
 			break;
 
 		default:
@@ -52,5 +47,6 @@ void CPlayer::inputprocess()
 	}
 }
 
-void CPlayer::SetMap(CMap* _pMap) { m_pMap = _pMap; }
+
+
 

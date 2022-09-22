@@ -1,5 +1,7 @@
 #pragma once
 
+#define PRINT_GAP_X 48
+#define PRINT_GAP_Y 3
 
 enum class WINCOLOR
 {
@@ -30,3 +32,14 @@ enum class SCENE_TYPE
 	END,
 
 };
+
+enum class DIR
+{
+	UP,
+	DOWN,
+	LEFT,
+	RIGHT,
+	END,
+
+};
+
