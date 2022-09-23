@@ -146,6 +146,7 @@
     <ClCompile Include="House.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Map.cpp" />
+    <ClCompile Include="MyVector.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="Scene.cpp" />
     <ClCompile Include="Scene_Dead.cpp" />
@@ -164,6 +165,7 @@
     <ClInclude Include="House.h" />
     <ClInclude Include="Map.h" />
     <ClInclude Include="MyMath.h" />
+    <ClInclude Include="MyVector.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="Scene.h" />
     <ClInclude Include="Scene_Dead.h" />

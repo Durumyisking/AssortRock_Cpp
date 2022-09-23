@@ -38,6 +38,12 @@
     <Filter Include="Data">
       <UniqueIdentifier>{046e5057-d0f6-4a55-b5df-58d8dcfe0646}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Lib">
+      <UniqueIdentifier>{33219262-fa15-4913-8d68-0a9311a665e6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Lib\Vector">
+      <UniqueIdentifier>{e1f9a18f-562d-416f-920c-04918c59e1ff}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Application.cpp">
@@ -79,6 +85,9 @@
     </ClCompile>
     <ClCompile Include="Stage.cpp">
       <Filter>Data</Filter>
+    </ClCompile>
+    <ClCompile Include="MyVector.cpp">
+      <Filter>Lib\Vector</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -129,6 +138,9 @@
     </ClInclude>
     <ClInclude Include="Stage.h">
       <Filter>Data</Filter>
+    </ClInclude>
+    <ClInclude Include="MyVector.h">
+      <Filter>Lib\Vector</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

@@ -1,16 +1,25 @@
-﻿#include "Common.h"
-#include "Application.h"
+﻿#include "Application.h"
 
 /*
 	게임 구동 순서
 	init -> while(update -> rendering) -> end
 */
-
-
 CApplication application;
 
 int main()
 {
+
+	CMyVector<int>* vec = new CMyVector<int>();
+	for (int i = 0; i < 35; i++)
+	{
+		vec->push_back(i);
+	}
+
+	for (int i = 0; i < vec->size(); i++)
+	{
+	}
+
+
 	setlocale(LC_ALL, "");
 
 

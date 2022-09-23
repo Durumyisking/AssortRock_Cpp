@@ -9,6 +9,7 @@
 #include "MyMath.h"
 #include "define.h"
 #include "GlobalFunc.h"
+#include "MyVector.h"
 
 
 using namespace std;
