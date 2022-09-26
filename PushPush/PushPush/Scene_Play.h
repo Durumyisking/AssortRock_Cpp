@@ -2,7 +2,6 @@
 #include "Scene.h"
 #include "Stage.h"
 
-class CPlayer;
 
 class CScene_Play : 
 	public CScene
@@ -21,7 +20,6 @@ private:
 	void initmap();
 
 private:
-	CPlayer*	m_pPlayer;
 	CStage*		m_Stage;
 //	CStage*		m_Stage[3];
 };
