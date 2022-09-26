@@ -15,7 +15,7 @@ public:
 	CMyVector(CMyVector& _other)
 		: m_Arr(new T[_other.m_capacity])
 		, m_capacity(_other.m_capacity)
-		, m_size (_other.m_size)
+		, m_size(_other.m_size)
 	{
 		for (size_t i = 0; i < m_capacity; i++)
 		{
@@ -93,8 +93,8 @@ public:
 public:
 	size_t size() { return m_size; }
 	size_t capacity() { return m_capacity; }
-	bool empty() { return !m_size;  }
-	void clear(){ if(!empty()) m_size = 0; }
+	bool empty() { return !m_size; }
+	void clear() { if (!empty()) m_size = 0; }
 
 
 private:

@@ -22,7 +22,7 @@ bool CStage::Load()
 	if (0 != fp)
 	{
 		for (int y = 0; y < 8; y++)
-		{		
+		{
 			int idx = 0;
 			// file 입력
 			fgetws(buff, 63, fp);
@@ -36,7 +36,7 @@ bool CStage::Load()
 
 
 		// 램으로 파일 가져왔으면 하드로 반납해야함
-			fclose(fp);
+		fclose(fp);
 	}
 
 

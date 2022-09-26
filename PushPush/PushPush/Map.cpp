@@ -85,7 +85,7 @@ void CMap::Render()
 			wcout << m_pWall[y][x];
 			// 현재 렌더링 위치가 Object 위치면			
 			SetGameObject(x, y);
-			
+
 		}
 	}
 }
@@ -154,7 +154,7 @@ CGameObject* CMap::GetObj(int _ix, int _iy)
 	{
 		if (nullptr != m_pGameObjects[i])
 		{
-			if(_ix == m_pGameObjects[i]->GetPos().ix && _iy == m_pGameObjects[i]->GetPos().iy)
+			if (_ix == m_pGameObjects[i]->GetPos().ix && _iy == m_pGameObjects[i]->GetPos().iy)
 				return m_pGameObjects[i];
 		}
 	}

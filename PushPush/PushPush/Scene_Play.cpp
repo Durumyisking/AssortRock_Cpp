@@ -19,7 +19,7 @@ CScene_Play::~CScene_Play()
 void CScene_Play::Init()
 {
 	initmap();
-	
+
 }
 
 void CScene_Play::Update()
@@ -46,11 +46,11 @@ void CScene_Play::Render()
 {
 	int y = 3;
 	SetColor(WINCOLOR::DARK_SKY_BLUE);
-	_SetCursor(PRINT_GAP_X, (y + 2)); wcout <<		L"┌───────────────────────┐" << endl;
-	_SetCursor(PRINT_GAP_X, (y + 3)); wcout <<		L"│      PLAY             │" << endl;
-	_SetCursor(PRINT_GAP_X, (y + 4)); wcout <<		L"│            SCENE      │" << endl;
-	_SetCursor(PRINT_GAP_X, (y + 5)); wcout <<		L"└───────────────────────┘" << endl;
-	_SetCursor(PRINT_GAP_X, (y + 6)); wcout <<	L"Press Enter to be Dead !?" << endl;
+	_SetCursor(PRINT_GAP_X, (y + 2)); wcout << L"┌───────────────────────┐" << endl;
+	_SetCursor(PRINT_GAP_X, (y + 3)); wcout << L"│      PLAY             │" << endl;
+	_SetCursor(PRINT_GAP_X, (y + 4)); wcout << L"│            SCENE      │" << endl;
+	_SetCursor(PRINT_GAP_X, (y + 5)); wcout << L"└───────────────────────┘" << endl;
+	_SetCursor(PRINT_GAP_X, (y + 6)); wcout << L"Press Enter to be Dead !?" << endl;
 
 	SetColor(WINCOLOR::DARK_GREEN);
 	_SetCursor((PRINT_GAP_X - 35), y++); printf("[ Backspace ] : undo\n");
@@ -88,14 +88,3 @@ void CScene_Play::initmap()
 {
 
 	m_pMap = new CMap(8, 8);
-
-
-
-	// stage메모장 파일을 읽어서 그걸 맵으로 쓸꺼임
-	CStage* stage = new CStage();
-	stage->SetMap(m_pMap);
-	stage->Load();
-	m_pMap->Init();
-	m_pPlayer = m_pMap->GetPlayer();
-}
-

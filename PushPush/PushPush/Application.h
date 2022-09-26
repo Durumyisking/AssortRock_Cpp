@@ -7,7 +7,7 @@ class CScene;
 
 class CApplication
 {
-// Singleton Pattern
+	// Singleton Pattern
 public:
 	static CApplication* GetInst()
 	{

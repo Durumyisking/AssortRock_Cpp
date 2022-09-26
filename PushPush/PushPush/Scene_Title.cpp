@@ -18,7 +18,7 @@ void CScene_Title::Init()
 }
 
 void CScene_Title::Update()
-{	
+{
 	if (_kbhit())
 	{
 		char chInput = 0;

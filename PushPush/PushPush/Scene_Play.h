@@ -3,7 +3,7 @@
 #include "Stage.h"
 
 
-class CScene_Play : 
+class CScene_Play :
 	public CScene
 {
 public:
@@ -18,6 +18,13 @@ public:
 
 private:
 	void initmap();
+
+private:
+	CStage* m_Stage;
+	//	CStage*		m_Stage[3];
+};
+
+
 
 private:
 	CStage*		m_Stage;

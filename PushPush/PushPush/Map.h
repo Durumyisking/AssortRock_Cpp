@@ -30,12 +30,12 @@ public:
 
 
 private:
-	wchar_t**	m_pWall;
+	wchar_t** m_pWall;
 
 	size_t		m_sizeY;
 	size_t		m_sizeX;
 
-	CPlayer*	m_pPlayer;
+	CPlayer* m_pPlayer;
 
 	CGameObject* m_pGameObjects[128];
 

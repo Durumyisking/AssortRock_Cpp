@@ -8,7 +8,7 @@ class CPlayer :
 {
 public:
     CPlayer();
-   ~CPlayer();
+    ~CPlayer();
 
 public:
     virtual void Update() override;
