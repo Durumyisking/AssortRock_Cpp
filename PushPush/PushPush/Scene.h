@@ -20,5 +20,7 @@ public:
 protected:
 	CMap* m_pMap;
 
+
 };
 
+	

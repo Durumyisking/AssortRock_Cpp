@@ -88,3 +88,14 @@ void CScene_Play::initmap()
 {
 
 	m_pMap = new CMap(8, 8);
+
+
+
+	// stage메모장 파일을 읽어서 그걸 맵으로 쓸꺼임
+	CStage* stage = new CStage();
+	stage->SetMap(m_pMap);
+	stage->Load();
+	m_pMap->Init();
+	m_pPlayer = m_pMap->GetPlayer();
+}
+

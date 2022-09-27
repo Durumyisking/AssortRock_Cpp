@@ -30,7 +30,7 @@ public:
 
 public:
 	// operator
-	vector& operator=(vector& _other)
+	CMyVector& operator=(CMyVector& _other)
 	{
 		if (nullptr != this)
 		{

@@ -133,7 +133,7 @@
     <ClInclude Include="Stage.h">
       <Filter>Data</Filter>
     </ClInclude>
-    <ClInclude Include="CMyList.h">
+    <ClInclude Include="MyList.h">
       <Filter>Lib</Filter>
     </ClInclude>
     <ClInclude Include="MyVector.h">

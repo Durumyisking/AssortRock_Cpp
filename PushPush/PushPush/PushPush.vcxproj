@@ -157,7 +157,7 @@
   <ItemGroup>
     <ClInclude Include="Application.h" />
     <ClInclude Include="Ball.h" />
-    <ClInclude Include="CMyList.h" />
+    <ClInclude Include="MyList.h" />
     <ClInclude Include="Common.h" />
     <ClInclude Include="define.h" />
     <ClInclude Include="GameObject.h" />
