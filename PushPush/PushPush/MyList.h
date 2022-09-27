@@ -247,7 +247,6 @@ public:
 			++_iter;
 			Pop_Front();
 		}
-
 		return _iter;
 	} // ¼÷Á¦
 
@@ -256,4 +255,4 @@ private:
 	tNode<T>* m_pEnd;
 	size_t  m_iCount;
 };
-
+	

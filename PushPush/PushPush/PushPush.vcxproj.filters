@@ -139,5 +139,8 @@
     <ClInclude Include="MyVector.h">
       <Filter>Lib</Filter>
     </ClInclude>
+    <ClInclude Include="Pair.h">
+      <Filter>Lib</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

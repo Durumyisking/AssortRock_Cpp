@@ -72,11 +72,10 @@ void CScene_Play::Render()
 	y++;
 	y++;
 	SetColor(WINCOLOR::DARK_BLUE);
-	_SetCursor((PRINT_GAP_X + 35), y++); printf("[ PAGE_UP ] : NePRINT_GAP_Xt stage");
+	_SetCursor((PRINT_GAP_X + 35), y++); printf("[ PAGE_UP ] : Next stage");
 	_SetCursor((PRINT_GAP_X + 35), y++); printf("[ PAGE_DOWN ] : Previous");
 
 	m_pMap->Render();
-
 }
 
 void CScene_Play::Destroy()
