@@ -43,3 +43,12 @@ enum class DIR
 
 };
 
+enum class OBJ_TYPE
+{
+	WALL,
+	HOUSE,
+	BALL,
+	PLAYER,
+	END,
+
+};

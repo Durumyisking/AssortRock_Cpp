@@ -21,15 +21,16 @@ public:
 	wstring GetName() const { return m_strName; }
 
 	void move(DIR _eDir);
-	void movecheck(CGameObject* _pCheck, DIR _eDir);
+	void movecheck(wchar_t _wcCheck, DIR _eDir);
 
 	WINCOLOR GetObjColor() const { return m_eColor; }
-
+	OBJ_TYPE GetType() const { return m_eType; }
 protected:
 	CMap* m_pMap;
 	Vector2 m_vPos;
 	wchar_t m_wcRender;
 	wstring  m_strName;
 	WINCOLOR m_eColor;
+	OBJ_TYPE m_eType;
 };
 

@@ -10,7 +10,10 @@ CMap::CMap()
 	, m_sizeY(0)
 
 {
-	memset(m_pGameObjects, 0, sizeof(CGameObject*) * 128);
+	//for (size_t i = 0; i < static_cast<UINT>(OBJ_TYPE::END); i++)
+	//{
+	//	memset(m_pGameObjects[i], 0, sizeof(CGameObject*) * 128);
+	//}
 }
 
 CMap::CMap(int _ix, int _iy)
@@ -19,7 +22,10 @@ CMap::CMap(int _ix, int _iy)
 	, m_sizeX(_ix)
 	, m_sizeY(_iy)
 {
-	memset(m_pGameObjects, 0, sizeof(CGameObject*) * 128);
+	//for (size_t i = 0; i < static_cast<UINT>(OBJ_TYPE::END); i++)
+	//{
+	//	memset(m_pGameObjects, 0, sizeof(CGameObject*) * static_cast<UINT>(OBJ_TYPE::END));
+	//}
 	m_Data.resize(m_sizeY);
 	for (int i = 0; i < m_sizeY; ++i)
 	{
@@ -37,12 +43,15 @@ CMap::CMap(int _ix, int _iy)
 
 CMap::~CMap()
 {
-	for (size_t i = 0; i < 128; i++)
+	for (size_t i = 0; i < static_cast<UINT>(OBJ_TYPE::END); i++)
 	{
-		if (nullptr == m_pGameObjects[i])
+		for (size_t j = 0; j < m_pGameObjects[i].size(); j++)
 		{
-			delete m_pGameObjects[i];;
-			m_pGameObjects[i] = nullptr;
+			if (nullptr == m_pGameObjects[i][j])
+			{
+				delete m_pGameObjects[i][j];
+				m_pGameObjects[i][j] = nullptr;
+			}
 		}
 	}
 }
@@ -60,11 +69,14 @@ void CMap::Init()
 
 void CMap::Update()
 {
-	for (size_t i = 0; i < 128; i++)
+	for (size_t i = 0; i < static_cast<UINT>(OBJ_TYPE::END); i++)
 	{
-		if(nullptr != m_pGameObjects[i])
-		{ 
-			m_pGameObjects[i]->Update();
+		for (size_t j = 0; j < m_pGameObjects[i].size(); j++)
+		{
+			if (nullptr != m_pGameObjects[i][j])
+			{
+				m_pGameObjects[i][j]->Update();
+			}
 		}
 	}
 }
@@ -89,27 +101,30 @@ void CMap::Render()
 void CMap::SetGameObject(UINT _ix, UINT _iy)
 {
 
-	for (size_t i = 0; i < 128; i++)
+	for (size_t i = 0; i < static_cast<UINT>(OBJ_TYPE::END); i++)
 	{
-		if (nullptr != m_pGameObjects[i])
+		for (size_t j = 0; j < m_pGameObjects[i].size(); j++)
 		{
-			if ((m_pGameObjects[i]->GetPos().ix == _ix) && (m_pGameObjects[i]->GetPos().iy == _iy))
+			if (nullptr != m_pGameObjects[i][j])
 			{
-				if (L"Player" == m_pGameObjects[i]->GetName())
+				if ((m_pGameObjects[i][j]->GetPos().ix == _ix) && (m_pGameObjects[i][j]->GetPos().iy == _iy))
 				{
-					SetColor(m_pGameObjects[i]->GetObjColor());
-				}
-				else if (L"Ball" == m_pGameObjects[i]->GetName())
-				{
-					SetColor(m_pGameObjects[i]->GetObjColor());
-				}
-				else if (L"House" == m_pGameObjects[i]->GetName())
-				{
-					SetColor(m_pGameObjects[i]->GetObjColor());
-				}
+					if (L"Player" == m_pGameObjects[i][j]->GetName())
+					{
+						SetColor(m_pGameObjects[i][j]->GetObjColor());
+					}
+					else if (L"Ball" == m_pGameObjects[i][j]->GetName())
+					{
+						SetColor(m_pGameObjects[i][j]->GetObjColor());
+					}
+					else if (L"House" == m_pGameObjects[i][j]->GetName())
+					{
+						SetColor(m_pGameObjects[i][j]->GetObjColor());
+					}
 
-				_SetCursor(static_cast<short>(_ix * 2 + PRINT_GAP_X), static_cast<short>(_iy + 10));
-				wcout << m_pGameObjects[i]->GetRenderwc();
+					_SetCursor(static_cast<short>(_ix * 2 + PRINT_GAP_X), static_cast<short>(_iy + 10));
+					wcout << m_pGameObjects[i][j]->GetRenderwc();
+				}
 			}
 		}
 	}
@@ -153,24 +168,23 @@ void CMap::CheckMap(int _iy, int _ix, wchar_t _wc)
 
 void CMap::AddGameObject(CGameObject* _pGameObj)
 {
-	for (size_t i = 0; i < 128; i++)
+	if (nullptr != _pGameObj)
 	{
-		if (nullptr == m_pGameObjects[i])
-		{
-			m_pGameObjects[i] = _pGameObj;
-			break;
-		}
+		m_pGameObjects[static_cast<UINT>(_pGameObj->GetType())].push_back(_pGameObj);
 	}
 }
 
 CGameObject* CMap::GetObj(int _ix, int _iy)
 {
-	for (size_t i = 0; i < 128; i++)
+	for (size_t i = 0; i < static_cast<UINT>(OBJ_TYPE::END); i++)
 	{
-		if (nullptr != m_pGameObjects[i])
+		for (size_t j = 0; j < m_pGameObjects[i].size(); j++)
 		{
-			if (_ix == m_pGameObjects[i]->GetPos().ix && _iy == m_pGameObjects[i]->GetPos().iy)
-				return m_pGameObjects[i];
+			if (nullptr != m_pGameObjects[i][j])
+			{
+				if (_ix == m_pGameObjects[i][j]->GetPos().ix && _iy == m_pGameObjects[i][j]->GetPos().iy)
+					return m_pGameObjects[i][j];
+			}
 		}
 	}
 	return nullptr;

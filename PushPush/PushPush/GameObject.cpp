@@ -6,6 +6,7 @@ CGameObject::CGameObject()
 	, m_pMap(nullptr)
 	, m_wcRender(L'\0')
 	, m_eColor(WINCOLOR::BLACK)
+	, m_eType(OBJ_TYPE::END)
 {
 }
 
@@ -28,7 +29,6 @@ void CGameObject::SetMap(CMap* _pMap) { m_pMap = _pMap; }
 
 void CGameObject::move(DIR _eDir)
 {
-	
 	m_pMap->SetStage(m_vPos.iy, m_vPos.ix, L'¤Ô');
 
 	switch (_eDir)
@@ -55,49 +55,43 @@ void CGameObject::move(DIR _eDir)
 }
 
 
-void CGameObject::movecheck(CGameObject* _pCheck, DIR _eDir)
+void CGameObject::movecheck(wchar_t _wcCheck, DIR _eDir)
 {
-	if (nullptr != _pCheck)
+	vector <vector<wchar_t>>  WallData = m_pMap->GetData();
+	if (L'¢Ì' == _wcCheck)
 	{
-		if (L"Wall" == _pCheck->GetName())
+		return;
+	}
+	else if (L'¡Ü' == _wcCheck)
+	{
+		switch (_eDir)
 		{
-			return;
+		case DIR::UP:
+			if (L'¢Ì' ==  WallData[m_vPos.iy - 2][m_vPos.ix])
+				return;
+			m_pMap->GetObj(m_vPos.ix, m_vPos.iy - 1)->movecheck(WallData[m_vPos.iy - 2][m_vPos.ix], _eDir);
+			break;
+		case DIR::DOWN:
+			if (L'¢Ì' == WallData[m_vPos.iy + 2][m_vPos.ix])
+				return;
+			m_pMap->GetObj(m_vPos.ix, m_vPos.iy + 1)->movecheck(WallData[m_vPos.iy + 2][m_vPos.ix], _eDir);
+			break;
+		case DIR::LEFT:
+			if (L'¢Ì' == WallData[m_vPos.iy][m_vPos.ix - 2])
+				return;
+			m_pMap->GetObj(m_vPos.ix - 1, m_vPos.iy)->movecheck(WallData[m_vPos.iy][m_vPos.ix - 2], _eDir);
+			break;
+		case DIR::RIGHT:
+			if (L'¢Ì' == WallData[m_vPos.iy][m_vPos.ix + 2])
+				return;
+			m_pMap->GetObj(m_vPos.ix + 1, m_vPos.iy)->movecheck(WallData[m_vPos.iy][m_vPos.ix + 2], _eDir);
+			break;
+		case DIR::END:
+			break;
+		default:
+			break;
 		}
-		else if (L"Ball" == _pCheck->GetName())
-		{
-			switch (_eDir)
-			{
-			case DIR::UP:
-				if (L"Wall" == m_pMap->GetObj(m_vPos.ix, m_vPos.iy - 2)->GetName())
-					return;
-				_pCheck->movecheck(m_pMap->GetObj(m_vPos.ix, m_vPos.iy - 2), _eDir);
-				break;
-			case DIR::DOWN:
-				if (L"Wall" == m_pMap->GetObj(m_vPos.ix, m_vPos.iy + 2)->GetName())
-					return;
-				_pCheck->movecheck(m_pMap->GetObj(m_vPos.ix, m_vPos.iy + 2), _eDir);
-				break;
-			case DIR::LEFT:
-				if (L"Wall" == m_pMap->GetObj(m_vPos.ix - 2, m_vPos.iy)->GetName())
-					return;
-				_pCheck->movecheck(m_pMap->GetObj(m_vPos.ix - 2, m_vPos.iy), _eDir);
-				break;
-			case DIR::RIGHT:
-				if (L"Wall" == m_pMap->GetObj(m_vPos.ix + 2, m_vPos.iy)->GetName())
-					return;
-				_pCheck->movecheck(m_pMap->GetObj(m_vPos.ix + 2, m_vPos.iy), _eDir);
-				break;
-			case DIR::END:
-				break;
-			default:
-				break;
-			}
-			move(_eDir);
-		}
-		else
-		{
-			move(_eDir);
-		}
+		move(_eDir);
 	}
 	else
 	{

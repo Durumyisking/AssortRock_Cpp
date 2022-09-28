@@ -6,6 +6,7 @@ CHouse::CHouse()
 	m_wcRender = L'ขอ';
 	m_strName = L"House";
 	m_eColor = WINCOLOR::WHITE;
+	m_eType = OBJ_TYPE::HOUSE;
 
 }
 
@@ -15,7 +16,7 @@ CHouse::CHouse(Pos _vPos)
 	m_wcRender = L'ขอ';
 	m_strName = L"House";
 	m_eColor = WINCOLOR::WHITE;
-
+	m_eType = OBJ_TYPE::HOUSE;
 }
 
 CHouse::~CHouse()

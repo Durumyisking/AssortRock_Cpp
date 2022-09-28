@@ -6,7 +6,7 @@ CWall::CWall()
 	m_wcRender = L'¢Ì';
 	m_strName = L"Wall";
 	m_eColor = WINCOLOR::DARK_YELLOW;
-
+	m_eType = OBJ_TYPE::WALL;
 }
 
 CWall::CWall(Pos _vPos)
@@ -15,6 +15,7 @@ CWall::CWall(Pos _vPos)
 	m_wcRender = L'¢Ì';
 	m_strName = L"Wall";
 	m_eColor = WINCOLOR::DARK_YELLOW;
+	m_eType = OBJ_TYPE::WALL;
 }
 
 CWall::~CWall()

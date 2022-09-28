@@ -8,6 +8,7 @@ CBall::CBall()
 	m_wcRender = L'¡Ü';
 	m_strName = L"Ball";
 	m_eColor = WINCOLOR::DARK_BLUE;
+	m_eType = OBJ_TYPE::BALL;
 }
 
 CBall::CBall(Pos _vPos)
@@ -16,6 +17,7 @@ CBall::CBall(Pos _vPos)
 	m_wcRender = L'¡Ü';
 	m_strName = L"Ball";
 	m_eColor = WINCOLOR::DARK_BLUE;
+	m_eType = OBJ_TYPE::BALL;
 }
 
 CBall::~CBall()

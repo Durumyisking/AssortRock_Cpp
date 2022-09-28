@@ -38,7 +38,7 @@ private:
 
 	CPlayer* m_pPlayer;
 
-	CGameObject* m_pGameObjects[128];
+	vector<CGameObject*> m_pGameObjects[static_cast<UINT>(OBJ_TYPE::END)];
 
 };
 
