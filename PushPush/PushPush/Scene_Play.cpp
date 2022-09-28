@@ -24,7 +24,8 @@ void CScene_Play::Init()
 
 void CScene_Play::Update()
 {
-	m_pPlayer->Update();
+
+	m_pMap->Update();
 
 	if (_kbhit())
 	{
@@ -40,6 +41,8 @@ void CScene_Play::Update()
 			break;
 		}
 	}
+
+
 }
 
 void CScene_Play::Render()
@@ -85,15 +88,9 @@ void CScene_Play::Destroy()
 
 void CScene_Play::initmap()
 {
-
-	m_pMap = new CMap(8, 8);
-
-
-
 	// stage메모장 파일을 읽어서 그걸 맵으로 쓸꺼임
 	CStage* stage = new CStage();
-	stage->SetMap(m_pMap);
-	stage->Load();
+	m_pMap = stage->Load();
 	m_pMap->Init();
 	m_pPlayer = m_pMap->GetPlayer();
 }

@@ -4,6 +4,8 @@
 CPlayer::CPlayer()
 {
 	m_wcRender = L'¢½';
+	m_strName = L"Player";
+	m_eColor = WINCOLOR::VIOLET;
 }
 
 CPlayer::~CPlayer()
@@ -24,20 +26,20 @@ void CPlayer::inputprocess()
 	if (_kbhit())
 	{
 		char input = _getch();
-		wchar_t** WallData = m_pMap->GetWall();
+		vector <vector<wchar_t>>  WallData = m_pMap->GetData();
 		switch (input)
 		{
 		case 'W': case 'w':
-			movecheck(WallData[m_vPos.iy - 1][m_vPos.ix], DIR::UP);
+			movecheck(m_pMap->GetObj(m_vPos.ix, m_vPos.iy - 1), DIR::UP);
 			break;
 		case 'S': case 's':
-			movecheck(WallData[m_vPos.iy + 1][m_vPos.ix], DIR::DOWN);
+			movecheck(m_pMap->GetObj(m_vPos.ix, m_vPos.iy + 1), DIR::DOWN);
 			break;
 		case 'A': case 'a':
-			movecheck(WallData[m_vPos.iy][m_vPos.ix - 1], DIR::LEFT);
+			movecheck(m_pMap->GetObj(m_vPos.ix - 1, m_vPos.iy), DIR::LEFT);
 			break;
 		case 'D': case 'd':
-			movecheck(WallData[m_vPos.iy][m_vPos.ix + 1], DIR::RIGHT);
+			movecheck(m_pMap->GetObj(m_vPos.ix + 1, m_vPos.iy), DIR::RIGHT);
 			break;
 
 		default:

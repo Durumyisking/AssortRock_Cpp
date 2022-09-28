@@ -23,9 +23,6 @@
     <Filter Include="GameObject\Player">
       <UniqueIdentifier>{e795fc7c-6816-44b5-bdf5-2a4d2fdd9e7f}</UniqueIdentifier>
     </Filter>
-    <Filter Include="GameObject\Stone">
-      <UniqueIdentifier>{1a704547-d1e1-466b-b22b-ed97317fc2a3}</UniqueIdentifier>
-    </Filter>
     <Filter Include="GameObject\House">
       <UniqueIdentifier>{64b285c3-63ef-4a95-b432-346c2805e30f}</UniqueIdentifier>
     </Filter>
@@ -40,6 +37,9 @@
     </Filter>
     <Filter Include="Lib">
       <UniqueIdentifier>{08645177-f2c4-4815-a75d-9be0abd0548c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GameObject\Wall">
+      <UniqueIdentifier>{1a704547-d1e1-466b-b22b-ed97317fc2a3}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -74,8 +74,8 @@
     <ClCompile Include="Ball.cpp">
       <Filter>GameObject\Ball</Filter>
     </ClCompile>
-    <ClCompile Include="Stone.cpp">
-      <Filter>GameObject\Stone</Filter>
+    <ClCompile Include="Wall.cpp">
+      <Filter>GameObject\Wall</Filter>
     </ClCompile>
     <ClCompile Include="House.cpp">
       <Filter>GameObject\House</Filter>
@@ -124,8 +124,8 @@
     <ClInclude Include="Ball.h">
       <Filter>GameObject\Ball</Filter>
     </ClInclude>
-    <ClInclude Include="Stone.h">
-      <Filter>GameObject\Stone</Filter>
+    <ClInclude Include="Wall.h">
+      <Filter>GameObject\Wall</Filter>
     </ClInclude>
     <ClInclude Include="House.h">
       <Filter>GameObject\House</Filter>

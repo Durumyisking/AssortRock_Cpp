@@ -11,5 +11,7 @@ public:
     virtual void Update() override;
     virtual void Render() override;
 
+private:
+    bool m_bIsHome;
 };
 

@@ -9,12 +9,10 @@ public:
 	~CStage();
 
 public:
-	void SetMap(CMap* _pMap) { m_pMap = _pMap; }
-	bool Load();
-
-
+	CMap* Load();
+	int GetCurrentStage() const { return m_iCurrentStage; };
 
 private:
-	CMap* m_pMap;
+	int m_iCurrentStage;
 };
 

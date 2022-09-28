@@ -1,12 +1,12 @@
 #pragma once
 #include "GameObject.h"
-class CHouse :
+class CWall :
     public CGameObject
 {
 public:
-    CHouse();
-    CHouse(Pos _vPos);
-    ~CHouse();
+    CWall();
+    CWall(Pos _vPos);
+    ~CWall();
 
     virtual void Update() override;
     virtual void Render() override;

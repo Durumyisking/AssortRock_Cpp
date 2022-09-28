@@ -248,7 +248,7 @@ public:
 			Pop_Front();
 		}
 		return _iter;
-	} // ¼÷Á¦
+	}
 
 private:
 	tNode<T>* m_pBegin;

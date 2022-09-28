@@ -5,38 +5,34 @@
 template<typename T1, typename T2>
 class CPair
 {
+public:
 	CPair()
 		: first(T1())
 		, second(T2())
-	{
-	}
+	{	}
 	CPair(T1& _first, T2& _second)
 		: first(_first)
 		, second(_second)
-	{
-	}
+	{	}
 	// 이동 인자
 	template<typename U1, typename U2>
 	CPair(U1&& _first, U2&& _second)
 		: first(forward<U1>(_first))
 		, second(forward<U2>(_second))
-	{
-	}
+	{	}
 
 	template<typename U1, typename U2>
 	CPair(const pair<U1, U2>& _other)
 		: first(_other.first)
 		, second(_other.second)
-	{
-	}
+	{	}
 	// 이동생성자
 	// type들이 명시적이지 않기 때문에 forward 사용 (universal reference)
 	template<typename U1, typename U2>
 	CPair(const pair<U1, U2>&& _other)
 		: first(forward<U1>(_other.first))
 		, second(forward<U2>(_other.second))
-	{
-	}
+	{	}
 	~CPair() = default;
 
 public:
@@ -53,12 +49,30 @@ public:
 		return *this;
 	}
 
-	bool operator == (const CPair& _other) const; // 숙제
-	bool operator != (const CPair& _other) const; // 숙제
-	bool operator < (const CPair& _other) const; // 숙제
-	bool operator <= (const CPair& _other) const; // 숙제
-	bool operator > (const CPair& _other) const; // 숙제
-	bool operator >= (const CPair& _other) const; // 숙제
+	bool operator == (const CPair& _other) const
+	{
+		return (second == _other.second);
+	}
+	bool operator != (const CPair& _other) const
+	{
+		return !(this == _other);
+	}
+	bool operator < (const CPair& _other) const
+	{
+		return (second < _other.second);
+	}
+	bool operator <= (const CPair& _other) const
+	{
+		return (second <= _other.second);
+	}
+	bool operator > (const CPair& _other) const
+	{
+		return (second > _other.second);
+	}
+	bool operator >= (const CPair& _other) const
+	{
+		return (second >= _other.second);
+	}
 
 public:
 	void swap(CPair& _other)

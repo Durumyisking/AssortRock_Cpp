@@ -5,6 +5,8 @@
 #include <conio.h>
 #include <random>
 #include <assert.h>
+#include <vector>
+#include <string>
 
 #include "MyMath.h"
 #include "define.h"

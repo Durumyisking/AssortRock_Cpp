@@ -1,9 +1,10 @@
 #include "Map.h"
 #include "Ball.h"
 #include "House.h"
+#include "Wall.h"
 
 CMap::CMap()
-	: m_pWall(nullptr)
+	: m_Data{}
 	, m_pPlayer(nullptr)
 	, m_sizeX(0)
 	, m_sizeY(0)
@@ -13,24 +14,23 @@ CMap::CMap()
 }
 
 CMap::CMap(int _ix, int _iy)
-	: m_pWall(nullptr)
+	: m_Data{}
 	, m_pPlayer(nullptr)
 	, m_sizeX(_ix)
 	, m_sizeY(_iy)
 {
 	memset(m_pGameObjects, 0, sizeof(CGameObject*) * 128);
-
-	m_pWall = new wchar_t* [_iy];
-	for (int i = 0; i < _iy; ++i)
+	m_Data.resize(m_sizeY);
+	for (int i = 0; i < m_sizeY; ++i)
 	{
-		m_pWall[i] = new wchar_t[_ix];
+		m_Data[i].resize(m_sizeX);
 	}
 
 	for (int i = 0; i < _iy; ++i)
 	{
 		for (int j = 0; j < _ix; ++j)
 		{
-			m_pWall[i][j] = L'\0';
+			m_Data[i][j] = L'\0';
 		}
 	}
 }
@@ -45,14 +45,6 @@ CMap::~CMap()
 			m_pGameObjects[i] = nullptr;
 		}
 	}
-
-
-	for (int i = 0; i < m_sizeY; ++i)
-	{
-		delete[] m_pWall[i];
-	}
-	delete[] m_pWall;
-
 }
 
 void CMap::Init()
@@ -61,7 +53,7 @@ void CMap::Init()
 	{
 		for (UINT x = 0; x < m_sizeX; ++x)
 		{
-			CheckMap(x, y, m_pWall[y][x]);
+			CheckMap(x, y, m_Data[y][x]);
 		}
 	}
 }
@@ -70,7 +62,10 @@ void CMap::Update()
 {
 	for (size_t i = 0; i < 128; i++)
 	{
-		m_pGameObjects[i]->Update();
+		if(nullptr != m_pGameObjects[i])
+		{ 
+			m_pGameObjects[i]->Update();
+		}
 	}
 }
 
@@ -82,7 +77,7 @@ void CMap::Render()
 		{
 			SetColor(WINCOLOR::DARK_YELLOW);
 			_SetCursor(static_cast<short>(x * 2 + PRINT_GAP_X), static_cast<short>(y + 10));
-			wcout << m_pWall[y][x];
+			wcout << m_Data[y][x];
 			// 현재 렌더링 위치가 Object 위치면			
 			SetGameObject(x, y);
 
@@ -100,7 +95,19 @@ void CMap::SetGameObject(UINT _ix, UINT _iy)
 		{
 			if ((m_pGameObjects[i]->GetPos().ix == _ix) && (m_pGameObjects[i]->GetPos().iy == _iy))
 			{
-				SetColor(WINCOLOR::VIOLET);
+				if (L"Player" == m_pGameObjects[i]->GetName())
+				{
+					SetColor(m_pGameObjects[i]->GetObjColor());
+				}
+				else if (L"Ball" == m_pGameObjects[i]->GetName())
+				{
+					SetColor(m_pGameObjects[i]->GetObjColor());
+				}
+				else if (L"House" == m_pGameObjects[i]->GetName())
+				{
+					SetColor(m_pGameObjects[i]->GetObjColor());
+				}
+
 				_SetCursor(static_cast<short>(_ix * 2 + PRINT_GAP_X), static_cast<short>(_iy + 10));
 				wcout << m_pGameObjects[i]->GetRenderwc();
 			}
@@ -110,7 +117,7 @@ void CMap::SetGameObject(UINT _ix, UINT _iy)
 
 void CMap::SetStage(int _iy, int _ix, wchar_t _wcInput)
 {
-	m_pWall[_iy][_ix] = _wcInput;
+	m_Data[_iy][_ix] = _wcInput;
 }
 
 void CMap::CheckMap(int _iy, int _ix, wchar_t _wc)
@@ -130,7 +137,15 @@ void CMap::CheckMap(int _iy, int _ix, wchar_t _wc)
 	}
 	else if (L'♨' == _wc)
 	{
-
+		CHouse* pHouse = new CHouse(Pos(_iy, _ix));
+		pHouse->SetMap(this);
+		AddGameObject(pHouse);
+	}
+	else if (L'▩' == _wc)
+	{
+		CWall* pWall = new CWall(Pos(_iy, _ix));
+		pWall->SetMap(this);
+		AddGameObject(pWall);
 	}
 }
 

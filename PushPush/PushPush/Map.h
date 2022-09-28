@@ -25,12 +25,13 @@ public:
 
 	CGameObject* GetObj(int _ix, int _iy);
 
-	wchar_t** GetWall() { return m_pWall; }
+	vector <vector<wchar_t>>  GetData() { return m_Data; }
 
 
 
 private:
-	wchar_t** m_pWall;
+//	wchar_t** m_pWall;
+	vector <vector<wchar_t>> m_Data;
 
 	size_t		m_sizeY;
 	size_t		m_sizeX;

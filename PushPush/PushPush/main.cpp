@@ -15,9 +15,6 @@ CApplication application;
 
 int main()
 {
-//	CPair<int, char> pair(200, "A");
-//	CPair<int, char> pair2(500, "B");
-
 	setlocale(LC_ALL, "");
 
 	application.GetInst()->Init();				//	1. init
