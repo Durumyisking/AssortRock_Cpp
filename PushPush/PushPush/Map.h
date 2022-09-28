@@ -24,9 +24,7 @@ public:
 	void AddGameObject(CGameObject* _pGameObj);
 
 	CGameObject* GetObj(int _ix, int _iy);
-
-	vector <vector<wchar_t>>  GetData() { return m_Data; }
-
+	CGameObject* GetObj_Move(int _ix, int _iy);
 
 
 private:

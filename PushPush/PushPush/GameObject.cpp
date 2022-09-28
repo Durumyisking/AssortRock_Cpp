@@ -29,7 +29,7 @@ void CGameObject::SetMap(CMap* _pMap) { m_pMap = _pMap; }
 
 void CGameObject::move(DIR _eDir)
 {
-	m_pMap->SetStage(m_vPos.iy, m_vPos.ix, L'ㅤ');
+//	m_pMap->SetStage(m_vPos.iy, m_vPos.ix, L'ㅤ');
 
 	switch (_eDir)
 	{
@@ -50,51 +50,60 @@ void CGameObject::move(DIR _eDir)
 	default:
 		break;
 	}
-	m_pMap->SetStage(m_vPos.iy, m_vPos.ix, GetRenderwc());
+//	m_pMap->SetStage(m_vPos.iy, m_vPos.ix, GetRenderwc());
 
 }
 
 
-void CGameObject::movecheck(wchar_t _wcCheck, DIR _eDir)
+int CGameObject::movecheck(int _x, int _y, DIR _eDir)
 {
-	vector <vector<wchar_t>>  WallData = m_pMap->GetData();
-	if (L'▩' == _wcCheck)
+	CGameObject* pObject = m_pMap->GetObj_Move(_x, _y);
+
+	// 이동할칸 빈칸이면 이동하고 함수 종료
+	if (nullptr == pObject)
 	{
-		return;
+		move(_eDir);
+		return 0;
 	}
-	else if (L'●' == _wcCheck)
+
+	wstring name = pObject->GetName();
+
+	int result = 0;
+	// 다음칸이 벽이면
+	if (L"Wall" == name)
+	{
+		// 이동 안함
+		return 1;
+	}
+	// 공이면
+	else if (L"Ball" == name)
 	{
 		switch (_eDir)
 		{
 		case DIR::UP:
-			if (L'▩' ==  WallData[m_vPos.iy - 2][m_vPos.ix])
-				return;
-			m_pMap->GetObj(m_vPos.ix, m_vPos.iy - 1)->movecheck(WallData[m_vPos.iy - 2][m_vPos.ix], _eDir);
+			// 빈칸 아니면 다음칸도 검사
+			result = pObject->movecheck(_x, _y - 1, _eDir);
 			break;
 		case DIR::DOWN:
-			if (L'▩' == WallData[m_vPos.iy + 2][m_vPos.ix])
-				return;
-			m_pMap->GetObj(m_vPos.ix, m_vPos.iy + 1)->movecheck(WallData[m_vPos.iy + 2][m_vPos.ix], _eDir);
+			result = pObject->movecheck(_x, _y + 1, _eDir);
 			break;
 		case DIR::LEFT:
-			if (L'▩' == WallData[m_vPos.iy][m_vPos.ix - 2])
-				return;
-			m_pMap->GetObj(m_vPos.ix - 1, m_vPos.iy)->movecheck(WallData[m_vPos.iy][m_vPos.ix - 2], _eDir);
+			result = pObject->movecheck(_x - 1, _y, _eDir);
 			break;
 		case DIR::RIGHT:
-			if (L'▩' == WallData[m_vPos.iy][m_vPos.ix + 2])
-				return;
-			m_pMap->GetObj(m_vPos.ix + 1, m_vPos.iy)->movecheck(WallData[m_vPos.iy][m_vPos.ix + 2], _eDir);
+			result = pObject->movecheck(_x + 1, _y, _eDir);
 			break;
+
 		case DIR::END:
 			break;
 		default:
 			break;
 		}
-		move(_eDir);
+		if (1 == result)
+		{
+			return 1;
+		}
 	}
-	else
-	{
-		move(_eDir);
-	}
+	move(_eDir);
+	return 0;
 }

@@ -62,7 +62,10 @@ void CMap::Init()
 	{
 		for (UINT x = 0; x < m_sizeX; ++x)
 		{
+			// 현재 좌표에 객체로 생성할수 있는 모양 있으면 현재 좌표를 가지는 객체 생성
 			CheckMap(x, y, m_Data[y][x]);
+			// 
+			m_Data[y][x] = L'　';
 		}
 	}
 }
@@ -89,6 +92,7 @@ void CMap::Render()
 		{
 			SetColor(WINCOLOR::DARK_YELLOW);
 			_SetCursor(static_cast<short>(x * 2 + PRINT_GAP_X), static_cast<short>(y + 10));
+			// 공백은 계속 출력해줘야함
 			wcout << m_Data[y][x];
 			// 현재 렌더링 위치가 Object 위치면			
 			SetGameObject(x, y);
@@ -135,7 +139,7 @@ void CMap::SetStage(int _iy, int _ix, wchar_t _wcInput)
 	m_Data[_iy][_ix] = _wcInput;
 }
 
-void CMap::CheckMap(int _iy, int _ix, wchar_t _wc)
+void CMap::CheckMap(int _ix, int _iy, wchar_t _wc)
 {
 	if (L'♡' == _wc)
 	{
@@ -146,19 +150,19 @@ void CMap::CheckMap(int _iy, int _ix, wchar_t _wc)
 	}
 	else if (L'●' == _wc)
 	{
-		CBall* pBall = new CBall(Pos(_iy, _ix));
+		CBall* pBall = new CBall(Pos(_ix, _iy));
 		pBall->SetMap(this);
 		AddGameObject(pBall);
 	}
 	else if (L'♨' == _wc)
 	{
-		CHouse* pHouse = new CHouse(Pos(_iy, _ix));
+		CHouse* pHouse = new CHouse(Pos(_ix, _iy));
 		pHouse->SetMap(this);
 		AddGameObject(pHouse);
 	}
 	else if (L'▩' == _wc)
 	{
-		CWall* pWall = new CWall(Pos(_iy, _ix));
+		CWall* pWall = new CWall(Pos(_ix, _iy));
 		pWall->SetMap(this);
 		AddGameObject(pWall);
 	}
@@ -177,6 +181,22 @@ void CMap::AddGameObject(CGameObject* _pGameObj)
 CGameObject* CMap::GetObj(int _ix, int _iy)
 {
 	for (size_t i = 0; i < static_cast<UINT>(OBJ_TYPE::END); i++)
+	{
+		for (size_t j = 0; j < m_pGameObjects[i].size(); j++)
+		{
+			if (nullptr != m_pGameObjects[i][j])
+			{
+				if (_ix == m_pGameObjects[i][j]->GetPos().ix && _iy == m_pGameObjects[i][j]->GetPos().iy)
+					return m_pGameObjects[i][j];
+			}
+		}
+	}
+	return nullptr;
+}
+
+CGameObject* CMap::GetObj_Move(int _ix, int _iy)
+{
+	for (int i = static_cast<int>(OBJ_TYPE::END) - 1; i >= static_cast<int>(OBJ_TYPE::WALL); i--)
 	{
 		for (size_t j = 0; j < m_pGameObjects[i].size(); j++)
 		{

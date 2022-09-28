@@ -21,7 +21,7 @@ public:
 	wstring GetName() const { return m_strName; }
 
 	void move(DIR _eDir);
-	void movecheck(wchar_t _wcCheck, DIR _eDir);
+	int movecheck(int _x, int _y, DIR _eDir);
 
 	WINCOLOR GetObjColor() const { return m_eColor; }
 	OBJ_TYPE GetType() const { return m_eType; }

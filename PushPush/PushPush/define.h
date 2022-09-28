@@ -45,7 +45,7 @@ enum class DIR
 
 enum class OBJ_TYPE
 {
-	WALL,
+	WALL = 0,
 	HOUSE,
 	BALL,
 	PLAYER,
