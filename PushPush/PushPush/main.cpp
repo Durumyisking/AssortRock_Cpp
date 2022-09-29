@@ -22,8 +22,9 @@ CApplication application;
 int main()
 {
 	setlocale(LC_ALL, "");
-
 	application.GetInst()->Init();				//	1. init
+	// 인트로 음악 재생
+	PlaySoundA("..\\Sounds\\intro.wav", 0, SND_FILENAME | SND_ASYNC | SND_LOOP);
 	while (application.GetInst()->GetIsRunning())
 	{
 		application.GetInst()->Update();	//		2. update
@@ -45,4 +46,3 @@ int main()
 // UI 점수판 (캐릭터 이동횟수)
 // 최종 스테이지 저장해줬다가 다시 키면 그 스테이지에서 시작
 // 배경음악
-// 이동할때 비프음 (종류 여러개 있으니까 돌 밀때 집 넣을때 등등 다양하게 사용하자)

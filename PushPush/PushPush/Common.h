@@ -7,6 +7,8 @@
 #include <assert.h>
 #include <vector>
 #include <string>
+#include <mmsystem.h>
+#include <time.h>
 
 #include "MyMath.h"
 #include "define.h"
@@ -14,5 +16,9 @@
 
 //#include "MyVector.h"
 //#include "MyList.h"
+
+
+#pragma comment(lib,"winmm.lib")
+
 
 using namespace std;

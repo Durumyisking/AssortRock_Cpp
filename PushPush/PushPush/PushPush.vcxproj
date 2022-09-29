@@ -150,6 +150,7 @@
     <ClCompile Include="Scene.cpp" />
     <ClCompile Include="Scene_Clear.cpp" />
     <ClCompile Include="Scene_Dead.cpp" />
+    <ClCompile Include="Scene_Intro.cpp" />
     <ClCompile Include="Scene_Play.cpp" />
     <ClCompile Include="Scene_Title.cpp" />
     <ClCompile Include="Stage.cpp" />
@@ -172,6 +173,7 @@
     <ClInclude Include="Scene.h" />
     <ClInclude Include="Scene_Clear.h" />
     <ClInclude Include="Scene_Dead.h" />
+    <ClInclude Include="Scene_Intro.h" />
     <ClInclude Include="Scene_Play.h" />
     <ClInclude Include="Scene_Title.h" />
     <ClInclude Include="Stage.h" />

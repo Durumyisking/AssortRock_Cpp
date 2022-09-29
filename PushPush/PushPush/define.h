@@ -3,7 +3,7 @@
 #define PRINT_GAP_X 48
 #define PRINT_GAP_Y 3
 
-#define STAGECOUNT 2
+#define STAGECOUNT 7
 
 enum class WINCOLOR
 {
@@ -27,6 +27,7 @@ enum class WINCOLOR
 
 enum class SCENE_TYPE
 {
+	INTRO,
 	TITLE,
 	PLAY,
 	CLEAR,

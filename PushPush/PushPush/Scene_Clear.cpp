@@ -34,13 +34,16 @@ void CScene_Clear::Update()
 
 void CScene_Clear::Render()
 {
-	SetColor(static_cast<WINCOLOR>(rand() % 15));
-	_SetCursor(12, 5); wcout << L"忙式式式式式式式式式式式式式式式式式式式式式式式忖" << endl;
-	_SetCursor(12, 6); wcout << L"弛                       弛" << endl;
-	_SetCursor(12, 7); wcout << L"弛        Clear!!        弛" << endl;
-	_SetCursor(12, 8); wcout << L"弛                       弛" << endl;
-	_SetCursor(12, 9); wcout << L"戌式式式式式式式式式式式式式式式式式式式式式式式戎" << endl;
-	_SetCursor(12, 10); wcout<< L"   Enter ====> NextStage " << endl;
+	void* p = new int();
+	srand((int)p);
+	SetColor(static_cast<WINCOLOR>(rand() % 15 + 1));
+
+	_SetCursor(PRINT_GAP_X, (10)); 	 wcout << L"忙式式式式式式式式式式式式式式式式式式式式式式式忖" << endl;
+	_SetCursor(PRINT_GAP_X, (11));	 wcout << L"弛                       弛" << endl;
+	_SetCursor(PRINT_GAP_X, (12));	 wcout << L"弛        Clear!!        弛" << endl;
+	_SetCursor(PRINT_GAP_X, (13));	 wcout << L"弛                       弛" << endl;
+	_SetCursor(PRINT_GAP_X, (14));	 wcout << L"戌式式式式式式式式式式式式式式式式式式式式式式式戎" << endl;
+	_SetCursor(PRINT_GAP_X, (15));   wcout <<  L"   Enter ====> NextStage " << endl;
 }
 
 void CScene_Clear::Destroy()
@@ -49,6 +52,7 @@ void CScene_Clear::Destroy()
 
 void CScene_Clear::Enter()
 {
+	PlaySoundA("..\\Sounds\\clear.wav", 0, SND_FILENAME | SND_ASYNC);
 	system("cls");
 }
 

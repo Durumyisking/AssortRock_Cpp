@@ -39,12 +39,14 @@ void CScene_Title::Update()
 
 void CScene_Title::Render()
 {
+
+
 	SetColor(static_cast<WINCOLOR>(rand() % 15));
-	_SetCursor(12, 5); wcout << L"忙式式式式式式式式式式式式式式式式式式式式式式式忖" << endl;
-	_SetCursor(12, 6); wcout << L"弛      PUSH             弛" << endl;
-	_SetCursor(12, 7); wcout << L"弛             PUSH      弛" << endl;
-	_SetCursor(12, 8); wcout << L"戌式式式式式式式式式式式式式式式式式式式式式式式戎" << endl;
-	_SetCursor(12, 9); wcout << L"   Press Enter to Play   " << endl;
+	_SetCursor(PRINT_GAP_X, (10)); 	 wcout << L"忙式式式式式式式式式式式式式式式式式式式式式式式忖" << endl;
+	_SetCursor(PRINT_GAP_X, (11));	 wcout << L"弛      PUSH             弛" << endl;
+	_SetCursor(PRINT_GAP_X, (12));	 wcout << L"弛             PUSH      弛" << endl;
+	_SetCursor(PRINT_GAP_X, (13));	 wcout << L"戌式式式式式式式式式式式式式式式式式式式式式式式戎" << endl;
+	_SetCursor(PRINT_GAP_X, (14));   wcout << L"   Press Enter to Play   " << endl;
 
 
 }
@@ -55,6 +57,7 @@ void CScene_Title::Destroy()
 
 void CScene_Title::Enter()
 {
+	PlaySoundA("..\\Sounds\\title.wav", 0, SND_FILENAME | SND_ASYNC | SND_LOOP);
 	system("cls");
 }
 

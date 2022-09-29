@@ -1,6 +1,7 @@
 #pragma once
 #include "Scene.h"
 #include "Stage.h"
+#include <fstream>
 
 class CPlayer;
 
@@ -22,10 +23,27 @@ public:
 
 private:
 	void initmap();
+	void save()
+	{
+		ofstream savestage("Saved.txt");
+		savestage << m_iCurrentStage;
+		savestage.close();
+	}
+	void load()
+	{
+		ifstream loadstage("Saved.txt");
+		if (loadstage)
+		{
+			int i = 0;
+			loadstage >> i;
+			m_iCurrentStage = i;
+		}
+		loadstage.close();
+	};
 
 private:
 	CPlayer* m_pPlayer;
-	CStage* m_Stage[2];
+	CStage* m_Stage[7];
 	
 	int		m_iCurrentStage;
 };

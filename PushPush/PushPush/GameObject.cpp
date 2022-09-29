@@ -68,6 +68,7 @@ int CGameObject::movecheck(int _x, int _y, DIR _eDir)
 	// 다음칸이 벽이면
 	if (L"Wall" == name)
 	{
+		Beep(300, 100);
 		// 이동 안함
 		return 1;
 	}

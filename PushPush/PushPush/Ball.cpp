@@ -29,6 +29,7 @@ void CBall::Update()
 	{
 		if (!m_bIsHome)
 		{
+			Beep(2000, 100);
 			m_pMap->SetBallInHouseCount(m_pMap->GetBallInHouseCount() + 1);
 			m_bIsHome = true;
 		}

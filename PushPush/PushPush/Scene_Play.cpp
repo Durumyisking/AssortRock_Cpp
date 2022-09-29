@@ -34,6 +34,24 @@ void CScene_Play::Update()
 
 	if (m_pMap[m_iCurrentStage]->IsClear())
 		++m_iCurrentStage;
+
+	if (_kbhit())
+	{
+		char chInput = 0;
+		chInput = _getch();
+
+		switch (chInput)
+		{
+		case 'n': case 'N':
+			save();
+			break;
+		case 'm': case 'M':
+			load();
+			break;
+		default:
+			break;
+		}
+	}
 }
 
 void CScene_Play::Render()
@@ -48,7 +66,7 @@ void CScene_Play::Render()
 	SetColor(WINCOLOR::DARK_GREEN);
 	_SetCursor((PRINT_GAP_X - 35), y++); printf("[ Backspace ] : undo\n");
 	_SetCursor((PRINT_GAP_X - 35), y++); printf("[ Reset ] : R \n");
-	_SetCursor((PRINT_GAP_X - 35), y++); printf("[ Esc ] : EPRINT_GAP_Xit \n");
+	_SetCursor((PRINT_GAP_X - 35), y++); printf("[ Esc ] : Exit \n");
 	SetColor(WINCOLOR::BLUE);
 	y++;
 	_SetCursor((PRINT_GAP_X - 35), y++); printf("[ H ] : Replay\n"); //타이틀씬으로
@@ -64,9 +82,14 @@ void CScene_Play::Render()
 
 	y++;
 	y++;
+	SetColor(WINCOLOR::WHITE); 
+	_SetCursor((PRINT_GAP_X + 35), y); printf("[ MOVE ] : ");
+	SetColor(WINCOLOR::GREEN);
+	_SetCursor((PRINT_GAP_X + 47), y++); printf("%d", m_pMap[m_iCurrentStage]->GetPlayer()->GetMove());
 	SetColor(WINCOLOR::DARK_BLUE);
-	_SetCursor((PRINT_GAP_X + 35), y++); printf("[ PAGE_UP ] : Next stage");
-	_SetCursor((PRINT_GAP_X + 35), y++); printf("[ PAGE_DOWN ] : Previous");
+	_SetCursor((PRINT_GAP_X + 36), y++); printf("[ N ] : Save");
+	_SetCursor((PRINT_GAP_X + 37), y++); printf("[ M ] : Load");
+
 
 	m_pMap[m_iCurrentStage]->Render();
 }
@@ -83,6 +106,7 @@ void CScene_Play::Destroy()
 
 void CScene_Play::Enter()
 {
+	PlaySoundA("..\\Sounds\\ingame.wav", 0, SND_FILENAME | SND_ASYNC | SND_LOOP);
 	system("cls");
 }
 

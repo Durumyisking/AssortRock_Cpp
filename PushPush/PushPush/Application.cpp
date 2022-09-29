@@ -4,13 +4,14 @@
 #include "Scene_Play.h"
 #include "Scene_Clear.h"
 #include "Scene_Dead.h"
+#include "Scene_Intro.h"
 
 CApplication* CApplication::m_Instance = nullptr;
 
 CApplication::CApplication()
 	: m_bIsRunning(true)
 	, m_arrScene{}
-	, m_eCurrentScene(SCENE_TYPE::TITLE)
+	, m_eCurrentScene(SCENE_TYPE::INTRO)
 {
 }
 
@@ -20,6 +21,7 @@ CApplication::~CApplication()
 
 bool CApplication::Init()
 {
+	m_arrScene[static_cast<UINT>(SCENE_TYPE::INTRO)] = new CScene_Intro();
 	m_arrScene[static_cast<UINT>(SCENE_TYPE::TITLE)] = new CScene_Title();
 	m_arrScene[static_cast<UINT>(SCENE_TYPE::PLAY)] = new CScene_Play();
 	m_arrScene[static_cast<UINT>(SCENE_TYPE::CLEAR)] = new CScene_Clear();
