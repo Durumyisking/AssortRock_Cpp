@@ -3,6 +3,8 @@
 #define PRINT_GAP_X 48
 #define PRINT_GAP_Y 3
 
+#define STAGECOUNT 2
+
 enum class WINCOLOR
 {
 	BLACK, /* 0 : ±î¸Á */
@@ -27,6 +29,7 @@ enum class SCENE_TYPE
 {
 	TITLE,
 	PLAY,
+	CLEAR,
 	DEAD,
 
 	END,

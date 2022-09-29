@@ -6,14 +6,20 @@
 #include "Ball.h"
 
 CScene_Play::CScene_Play()
-	: m_Stage(nullptr)
+	: m_Stage{}
 	, m_pPlayer(nullptr)
+	, m_iCurrentStage(0)
 {
 }
 
 CScene_Play::~CScene_Play()
 {
-	delete m_Stage;
+	for (int i = 0; i < STAGECOUNT; ++i)
+	{
+		delete m_Stage[i];
+		m_Stage[i] = nullptr;
+	}
+	Destroy();
 }
 
 void CScene_Play::Init()
@@ -24,25 +30,10 @@ void CScene_Play::Init()
 
 void CScene_Play::Update()
 {
+	m_pMap[m_iCurrentStage]->Update();
 
-	m_pMap->Update();
-
-	if (_kbhit())
-	{
-		char chInput = 0;
-		chInput = _getch();
-
-		switch (chInput)
-		{
-		case '\r':
-			CApplication::GetInst()->ChangeScene(SCENE_TYPE::DEAD);
-			break;
-		default:
-			break;
-		}
-	}
-
-
+	if (m_pMap[m_iCurrentStage]->IsClear())
+		++m_iCurrentStage;
 }
 
 void CScene_Play::Render()
@@ -53,7 +44,6 @@ void CScene_Play::Render()
 	_SetCursor(PRINT_GAP_X, (y + 3)); wcout << L"│      PLAY             │" << endl;
 	_SetCursor(PRINT_GAP_X, (y + 4)); wcout << L"│            SCENE      │" << endl;
 	_SetCursor(PRINT_GAP_X, (y + 5)); wcout << L"└───────────────────────┘" << endl;
-	_SetCursor(PRINT_GAP_X, (y + 6)); wcout << L"Press Enter to be Dead !?" << endl;
 
 	SetColor(WINCOLOR::DARK_GREEN);
 	_SetCursor((PRINT_GAP_X - 35), y++); printf("[ Backspace ] : undo\n");
@@ -78,20 +68,39 @@ void CScene_Play::Render()
 	_SetCursor((PRINT_GAP_X + 35), y++); printf("[ PAGE_UP ] : Next stage");
 	_SetCursor((PRINT_GAP_X + 35), y++); printf("[ PAGE_DOWN ] : Previous");
 
-	m_pMap->Render();
+	m_pMap[m_iCurrentStage]->Render();
 }
 
 void CScene_Play::Destroy()
 {
-	delete m_pMap;
+	for (int i = 0; i < STAGECOUNT; ++i)
+	{
+		m_pMap[i]->~CMap();
+		delete m_pMap[i];
+		m_pMap[i] = nullptr;
+	}
+}
+
+void CScene_Play::Enter()
+{
+	system("cls");
+}
+
+void CScene_Play::Exit()
+{
+	system("cls");
 }
 
 void CScene_Play::initmap()
 {
 	// stage메모장 파일을 읽어서 그걸 맵으로 쓸꺼임
-	CStage* stage = new CStage();
-	m_pMap = stage->Load();
-	m_pMap->Init();
-	m_pPlayer = m_pMap->GetPlayer();
+
+	for (int i = 0; i < STAGECOUNT; ++i)
+	{
+		m_Stage[i] = new CStage();
+		m_pMap[i] = m_Stage[i]->Load(i + 1);
+		m_pMap[i]->Init();
+		m_pPlayer = m_pMap[i]->GetPlayer();
+	}	
 }
 

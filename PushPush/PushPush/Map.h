@@ -9,6 +9,7 @@ class CMap
 public:
 	CMap();
 	CMap(int _ix, int _iy);
+
 	~CMap();
 
 public:
@@ -26,6 +27,10 @@ public:
 	CGameObject* GetObj(int _ix, int _iy);
 	CGameObject* GetObj_Move(int _ix, int _iy);
 
+	UINT GetBallInHouseCount() const { return m_iBallInHouse; }
+	void SetBallInHouseCount(int _iCount) { m_iBallInHouse = _iCount; }
+
+	bool IsClear() const { return m_bIsClear; }
 
 private:
 //	wchar_t** m_pWall;
@@ -36,7 +41,12 @@ private:
 
 	CPlayer* m_pPlayer;
 
+	UINT	m_iHouseCount;
+	UINT	m_iBallInHouse;
+
 	vector<CGameObject*> m_pGameObjects[static_cast<UINT>(OBJ_TYPE::END)];
+
+	bool	m_bIsClear;
 
 };
 

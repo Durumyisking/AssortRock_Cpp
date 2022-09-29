@@ -1,7 +1,7 @@
 #include "Stage.h"
 
 CStage::CStage()
-	:m_iCurrentStage(1)
+	: m_pNewMap(nullptr)
 {
 }
 
@@ -9,10 +9,10 @@ CStage::~CStage()
 {
 }
 
-CMap* CStage::Load()
+CMap* CStage::Load(int _Stage)
 {
 
-	wstring strStage = to_wstring(m_iCurrentStage);
+	wstring strStage = to_wstring(_Stage);
 	wstring strStagePath = L"..\\Stage\\Stage";
 	wstring strPathEnd = L".txt";
 	strStagePath += strStage;
@@ -40,18 +40,18 @@ CMap* CStage::Load()
 	mapY = stoi(y);
 
 	// 위에서 만들어준 크기를 가지는 맵 생성
-	CMap* newMap = new CMap(mapX, mapY);
+	m_pNewMap = new CMap(mapX, mapY);
 
 
 	if (0 != fp)
 	{
-		for (int y = 0; y < 8; y++)
+		for (int y = 0; y < mapY; y++)
 		{
 			fgetws(buff, 63, fp);
 
-			for (int x = 0; x < 8; x++)
+			for (int x = 0; x < mapX; x++)
 			{
-				newMap->SetStage(y, x, buff[x]);
+				m_pNewMap->SetStage(y, x, buff[x]);
 			}
 			cout << endl;
 		}
@@ -60,5 +60,5 @@ CMap* CStage::Load()
 	}
 
 
-	return newMap;
+	return m_pNewMap;
 }

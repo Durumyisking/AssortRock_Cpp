@@ -9,9 +9,6 @@ CPlayer::CPlayer()
 	m_eType = OBJ_TYPE::PLAYER;
 }
 
-CPlayer::~CPlayer()
-{
-}
 
 void CPlayer::Update()
 {
@@ -27,9 +24,7 @@ void CPlayer::inputprocess()
 	if (_kbhit())
 	{
 		char input = _getch();
-//		vector <vector<wchar_t>>  WallData = m_pMap->GetData();
 
-		
 		switch (input)
 		{
 		case 'W': case 'w':

@@ -83,6 +83,9 @@
     <ClCompile Include="Stage.cpp">
       <Filter>Data</Filter>
     </ClCompile>
+    <ClCompile Include="Scene_Clear.cpp">
+      <Filter>Scene</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Application.h">
@@ -141,6 +144,9 @@
     </ClInclude>
     <ClInclude Include="Pair.h">
       <Filter>Lib</Filter>
+    </ClInclude>
+    <ClInclude Include="Scene_Clear.h">
+      <Filter>Scene</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

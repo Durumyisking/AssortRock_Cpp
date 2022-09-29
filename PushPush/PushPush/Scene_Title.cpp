@@ -52,3 +52,13 @@ void CScene_Title::Render()
 void CScene_Title::Destroy()
 {
 }
+
+void CScene_Title::Enter()
+{
+	system("cls");
+}
+
+void CScene_Title::Exit()
+{
+	system("cls");
+}

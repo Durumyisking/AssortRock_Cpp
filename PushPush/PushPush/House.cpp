@@ -19,9 +19,6 @@ CHouse::CHouse(Pos _vPos)
 	m_eType = OBJ_TYPE::HOUSE;
 }
 
-CHouse::~CHouse()
-{
-}
 
 void CHouse::Update()
 {

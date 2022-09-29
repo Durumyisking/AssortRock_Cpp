@@ -6,7 +6,6 @@ class CHouse :
 public:
     CHouse();
     CHouse(Pos _vPos);
-    ~CHouse();
 
     virtual void Update() override;
     virtual void Render() override;

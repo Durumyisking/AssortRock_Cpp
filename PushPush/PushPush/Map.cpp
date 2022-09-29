@@ -3,17 +3,18 @@
 #include "House.h"
 #include "Wall.h"
 
+#include "Application.h"
+
 CMap::CMap()
 	: m_Data{}
 	, m_pPlayer(nullptr)
 	, m_sizeX(0)
 	, m_sizeY(0)
-
+	, m_iHouseCount(0)
+	, m_iBallInHouse(0)
+	, m_bIsClear(false)
 {
-	//for (size_t i = 0; i < static_cast<UINT>(OBJ_TYPE::END); i++)
-	//{
-	//	memset(m_pGameObjects[i], 0, sizeof(CGameObject*) * 128);
-	//}
+
 }
 
 CMap::CMap(int _ix, int _iy)
@@ -21,12 +22,12 @@ CMap::CMap(int _ix, int _iy)
 	, m_pPlayer(nullptr)
 	, m_sizeX(_ix)
 	, m_sizeY(_iy)
+	, m_iHouseCount(0)
+	, m_iBallInHouse(0)
+	, m_bIsClear(false)
 {
-	//for (size_t i = 0; i < static_cast<UINT>(OBJ_TYPE::END); i++)
-	//{
-	//	memset(m_pGameObjects, 0, sizeof(CGameObject*) * static_cast<UINT>(OBJ_TYPE::END));
-	//}
 	m_Data.resize(m_sizeY);
+
 	for (int i = 0; i < m_sizeY; ++i)
 	{
 		m_Data[i].resize(m_sizeX);
@@ -47,7 +48,7 @@ CMap::~CMap()
 	{
 		for (size_t j = 0; j < m_pGameObjects[i].size(); j++)
 		{
-			if (nullptr == m_pGameObjects[i][j])
+			if (nullptr != m_pGameObjects[i][j])
 			{
 				delete m_pGameObjects[i][j];
 				m_pGameObjects[i][j] = nullptr;
@@ -64,7 +65,7 @@ void CMap::Init()
 		{
 			// 현재 좌표에 객체로 생성할수 있는 모양 있으면 현재 좌표를 가지는 객체 생성
 			CheckMap(x, y, m_Data[y][x]);
-			// 
+			
 			m_Data[y][x] = L'　';
 		}
 	}
@@ -82,6 +83,12 @@ void CMap::Update()
 			}
 		}
 	}
+
+	if (m_iBallInHouse == m_iHouseCount)
+	{
+		m_bIsClear = true;
+		CApplication::GetInst()->ChangeScene(SCENE_TYPE::CLEAR);
+	}
 }
 
 void CMap::Render()
@@ -96,7 +103,6 @@ void CMap::Render()
 			wcout << m_Data[y][x];
 			// 현재 렌더링 위치가 Object 위치면			
 			SetGameObject(x, y);
-
 		}
 	}
 }
@@ -156,6 +162,7 @@ void CMap::CheckMap(int _ix, int _iy, wchar_t _wc)
 	}
 	else if (L'♨' == _wc)
 	{
+		++m_iHouseCount;
 		CHouse* pHouse = new CHouse(Pos(_ix, _iy));
 		pHouse->SetMap(this);
 		AddGameObject(pHouse);

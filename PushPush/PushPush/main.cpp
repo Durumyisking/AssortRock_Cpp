@@ -10,6 +10,12 @@
 	init -> while(update -> rendering) -> end
 */
 
+#ifdef _DEBUG
+#define DBG_NEW new ( _NORMAL_BLOCK , __FILE__ , __LINE__ )
+#else
+#define DBG_NEW new
+#endif
+
 
 CApplication application;
 
@@ -24,14 +30,17 @@ int main()
 		application.GetInst()->Rendering(); //		3. rendering
 	}
 	application.GetInst()->Destroy();		//		4. end
+
+
+	// memory leak check
+	_CrtSetDbgFlag(_CRTDBG_ALLOC_MEM_DF | _CRTDBG_LEAK_CHECK_DF);
+	const char* str = DBG_NEW char[20];
+	delete[] str;
+	str = nullptr;
+
+	return 0;
 }
 
-
-// wchar_t* 동적할당 했던것들 작업을 vector로 바꿔준다.
-// 맵 크기만큼의 우리 MapClass에 데이터를 동적할당한다.
-// 각 Obj의 데이터 값에 따라서 각 오브젝트들을 동적할당해준다.
-// ball house에 넣기
-// ball house에 넣으면 집 반짝빤짞
 // 스테이지 클리어하면 다음 스테이지로
 // UI 점수판 (캐릭터 이동횟수)
 // 최종 스테이지 저장해줬다가 다시 키면 그 스테이지에서 시작

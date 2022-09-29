@@ -1,11 +1,12 @@
 #pragma once
 #include "Scene.h"
-class CScene_Dead :
+class CScene_Clear :
     public CScene
 {
+
 public:
-	CScene_Dead();
-	~CScene_Dead();
+	CScene_Clear();
+	~CScene_Clear();
 
 public:
 	virtual void Init() override;

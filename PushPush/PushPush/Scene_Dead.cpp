@@ -34,3 +34,13 @@ void CScene_Dead::Render()
 void CScene_Dead::Destroy()
 {
 }
+
+void CScene_Dead::Enter()
+{
+	system("cls");
+}
+
+void CScene_Dead::Exit()
+{
+	system("cls");
+}

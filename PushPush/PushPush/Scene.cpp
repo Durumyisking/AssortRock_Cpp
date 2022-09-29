@@ -1,7 +1,7 @@
 #include "Scene.h"
 
 CScene::CScene()
-	: m_pMap(nullptr)
+	: m_pMap{}
 {
 }
 

@@ -29,8 +29,6 @@ void CGameObject::SetMap(CMap* _pMap) { m_pMap = _pMap; }
 
 void CGameObject::move(DIR _eDir)
 {
-//	m_pMap->SetStage(m_vPos.iy, m_vPos.ix, L'คิ');
-
 	switch (_eDir)
 	{
 	case DIR::UP:
@@ -50,8 +48,6 @@ void CGameObject::move(DIR _eDir)
 	default:
 		break;
 	}
-//	m_pMap->SetStage(m_vPos.iy, m_vPos.ix, GetRenderwc());
-
 }
 
 

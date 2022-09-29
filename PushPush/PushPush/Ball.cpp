@@ -20,9 +20,6 @@ CBall::CBall(Pos _vPos)
 	m_eType = OBJ_TYPE::BALL;
 }
 
-CBall::~CBall()
-{
-}
 
 void CBall::Update()
 {
@@ -30,11 +27,19 @@ void CBall::Update()
 
 	if (L"House" == pCheckObj->GetName())
 	{
-		m_bIsHome = true;
+		if (!m_bIsHome)
+		{
+			m_pMap->SetBallInHouseCount(m_pMap->GetBallInHouseCount() + 1);
+			m_bIsHome = true;
+		}
 	}
 	else
 	{
-		m_bIsHome = false;
+		if (m_bIsHome)
+		{
+			m_pMap->SetBallInHouseCount(m_pMap->GetBallInHouseCount() - 1);
+			m_bIsHome = false;
+		}
 	}
 
 	if (m_bIsHome)

@@ -16,13 +16,17 @@ public:
 	virtual void Update() override;
 	virtual void Render() override;
 	virtual void Destroy() override;
+	virtual void Enter() override;
+	virtual void Exit() override;
+
 
 private:
 	void initmap();
 
 private:
 	CPlayer* m_pPlayer;
-	CStage* m_Stage;
-	//	CStage*		m_Stage[3];
+	CStage* m_Stage[2];
+	
+	int		m_iCurrentStage;
 };
 
