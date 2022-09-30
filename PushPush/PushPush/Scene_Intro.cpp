@@ -74,8 +74,8 @@ void CScene_Intro::Render()
 		break;
 	case 2:
 		_SetCursor(PRINT_GAP_X - 14, m_iLine + 7);		wcout << L"       물부족 국가가 들으면 울고 갈 이야기지만..." << endl;
-		_SetCursor(PRINT_GAP_X - 14, m_iLine + 14);		wcout << L"				 Press Enter to Skip Intro				" << endl;
 		SetColor(WINCOLOR::DARK_YELLOW);
+		_SetCursor(PRINT_GAP_X - 14, m_iLine + 14);		wcout << L"				 Press Enter to Skip Intro				" << endl;
 		m_bIsTextChanged = false;
 		break;
 	case 3:

@@ -3,7 +3,10 @@
 #define PRINT_GAP_X 48
 #define PRINT_GAP_Y 3
 
-#define STAGECOUNT 7
+#define EASYSTAGE 4
+#define HARDSTAGE 3
+
+
 
 enum class WINCOLOR
 {
@@ -29,8 +32,11 @@ enum class SCENE_TYPE
 {
 	INTRO,
 	TITLE,
+	TUTORIAL,
+	STAGE_SELECT,
 	PLAY,
 	CLEAR,
+	ENDING,
 	DEAD,
 
 	END,
@@ -53,6 +59,15 @@ enum class OBJ_TYPE
 	HOUSE,
 	BALL,
 	PLAYER,
+	END,
+
+};
+
+
+enum class STAGE_TYPE
+{
+	EASY,
+	HARD,
 	END,
 
 };

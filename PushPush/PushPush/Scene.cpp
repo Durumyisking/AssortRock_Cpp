@@ -2,6 +2,7 @@
 
 CScene::CScene()
 	: m_pMap{}
+	, g_eCurrentDifficulty(STAGE_TYPE::EASY)
 {
 }
 

@@ -150,9 +150,12 @@
     <ClCompile Include="Scene.cpp" />
     <ClCompile Include="Scene_Clear.cpp" />
     <ClCompile Include="Scene_Dead.cpp" />
+    <ClCompile Include="Scene_Ending.cpp" />
     <ClCompile Include="Scene_Intro.cpp" />
     <ClCompile Include="Scene_Play.cpp" />
+    <ClCompile Include="Scene_StageSelect.cpp" />
     <ClCompile Include="Scene_Title.cpp" />
+    <ClCompile Include="Scene_Tutorial.cpp" />
     <ClCompile Include="Stage.cpp" />
     <ClCompile Include="Wall.cpp" />
   </ItemGroup>
@@ -173,9 +176,12 @@
     <ClInclude Include="Scene.h" />
     <ClInclude Include="Scene_Clear.h" />
     <ClInclude Include="Scene_Dead.h" />
+    <ClInclude Include="Scene_Ending.h" />
     <ClInclude Include="Scene_Intro.h" />
     <ClInclude Include="Scene_Play.h" />
+    <ClInclude Include="Scene_StageSelect.h" />
     <ClInclude Include="Scene_Title.h" />
+    <ClInclude Include="Scene_Tutorial.h" />
     <ClInclude Include="Stage.h" />
     <ClInclude Include="Wall.h" />
   </ItemGroup>

@@ -35,6 +35,7 @@ public:
 
 public:
 	void ChangeScene(SCENE_TYPE _eType);
+	void SetDifficulty(STAGE_TYPE _eType);
 
 private:
 	// private 함수는 소문자로 이름 지으면 좋음

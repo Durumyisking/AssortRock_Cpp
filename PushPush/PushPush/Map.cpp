@@ -98,7 +98,7 @@ void CMap::Render()
 		for (UINT x = 0; x < m_sizeX; ++x)
 		{
 			SetColor(WINCOLOR::DARK_YELLOW);
-			_SetCursor(static_cast<short>(x * 2 + PRINT_GAP_X), static_cast<short>(y + 10));
+			_SetCursor(static_cast<short>(x * 2 + PRINT_GAP_X +5), static_cast<short>(y + 10));
 			// 공백은 계속 출력해줘야함
 			wcout << m_Data[y][x];
 			// 현재 렌더링 위치가 Object 위치면			
@@ -132,7 +132,7 @@ void CMap::SetGameObject(UINT _ix, UINT _iy)
 						SetColor(m_pGameObjects[i][j]->GetObjColor());
 					}
 
-					_SetCursor(static_cast<short>(_ix * 2 + PRINT_GAP_X), static_cast<short>(_iy + 10));
+					_SetCursor(static_cast<short>(_ix * 2 + PRINT_GAP_X+5), static_cast<short>(_iy + 10));
 					wcout << m_pGameObjects[i][j]->GetRenderwc();
 				}
 			}

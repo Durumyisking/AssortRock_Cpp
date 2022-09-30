@@ -9,11 +9,19 @@ CStage::~CStage()
 {
 }
 
-CMap* CStage::Load(int _Stage)
+CMap* CStage::Load(STAGE_TYPE _eType, int _Stage)
 {
 
 	wstring strStage = to_wstring(_Stage);
-	wstring strStagePath = L"..\\Stage\\Stage";
+	wstring strStagePath;
+	if (STAGE_TYPE::EASY == _eType)
+	{
+		strStagePath = L"..\\Stage\\Easy\\Stage";
+	}
+	else if (STAGE_TYPE::HARD == _eType)
+	{
+		strStagePath = L"..\\Stage\\Hard\\Stage";
+	}
 	wstring strPathEnd = L".txt";
 	strStagePath += strStage;
 	strStagePath += strPathEnd;

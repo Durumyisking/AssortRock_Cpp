@@ -3,6 +3,8 @@
 #include "Stage.h"
 #include <fstream>
 
+
+
 class CPlayer;
 
 class CScene_Play :
@@ -26,6 +28,15 @@ private:
 	void save()
 	{
 		ofstream savestage("Saved.txt");
+		if (STAGE_TYPE::EASY == g_eCurrentDifficulty)
+		{
+			savestage << 'E';
+		}
+		else if (STAGE_TYPE::HARD == g_eCurrentDifficulty)
+		{
+			savestage << 'H';
+		}
+
 		savestage << m_iCurrentStage;
 		savestage.close();
 	}
@@ -34,6 +45,17 @@ private:
 		ifstream loadstage("Saved.txt");
 		if (loadstage)
 		{
+			char c = '\0';
+			loadstage >> c;
+			if ('E' == c)
+			{
+				g_eCurrentDifficulty = STAGE_TYPE::EASY;
+			}
+			else if ('H' == c)
+			{
+				g_eCurrentDifficulty = STAGE_TYPE::HARD;
+			}
+
 			int i = 0;
 			loadstage >> i;
 			m_iCurrentStage = i;
@@ -43,7 +65,9 @@ private:
 	void undo();
 	void restart();
 private:
-	CStage* m_Stage[STAGECOUNT];
+	CStage* m_StageEasy[EASYSTAGE];
+	CStage* m_StageHard[HARDSTAGE];
+//	STAGE_TYPE m_eStageType;
 	
 	int		m_iCurrentStage;
 };

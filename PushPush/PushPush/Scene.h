@@ -18,10 +18,12 @@ public:
 	virtual void Enter() = 0;
 	virtual void Exit() = 0;
 
+	void SetDifficulty(STAGE_TYPE _eType) { g_eCurrentDifficulty = _eType; }
+
 
 protected:
-	CMap* m_pMap[STAGECOUNT];
-
+	CMap* m_pMap[EASYSTAGE + HARDSTAGE];
+	STAGE_TYPE g_eCurrentDifficulty;
 
 };
 

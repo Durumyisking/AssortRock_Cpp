@@ -9,7 +9,7 @@ public:
 	~CStage();
 
 public:
-	CMap* Load(int _Stage);
+	CMap* Load(STAGE_TYPE _eType, int _Stage);
 
 private:
 	CMap* m_pNewMap;
