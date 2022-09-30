@@ -24,47 +24,43 @@ CPlayer::CPlayer(Pos _vPos)
 
 void CPlayer::Update()
 {
-	inputprocess();
 }
 
 void CPlayer::Render()
 {
 }
 
-void CPlayer::inputprocess()
+void CPlayer::InputProcess(char _input)
 {
-	if (_kbhit())
+
+	switch (_input)
 	{
-		char input = _getch();
+	case 'W':
+		if (1 != movecheck(m_vPos.ix, m_vPos.iy - 1, DIR::UP))
+			++m_iMove;
+		Beep(500, 100);
+		break;
+	case 'S':
+		if (1 != movecheck(m_vPos.ix, m_vPos.iy + 1, DIR::DOWN))
+			++m_iMove;
+		Beep(500, 100);
+		break;
+	case 'A':
+		if (1 != movecheck(m_vPos.ix - 1, m_vPos.iy, DIR::LEFT))
+			++m_iMove;
+		Beep(500, 100);
+		break;
+	case 'D':
+		if (1 != movecheck(m_vPos.ix + 1, m_vPos.iy, DIR::RIGHT))
+			++m_iMove;
+		Beep(500, 100);
+		break;
 
-		switch (input)
-		{
-		case 'W': case 'w':
-			if (1 != movecheck(m_vPos.ix, m_vPos.iy - 1, DIR::UP))
-				++m_iMove;
-			Beep(500, 100);
-			break;
-		case 'S': case 's':
-			if (1 != movecheck(m_vPos.ix, m_vPos.iy + 1, DIR::DOWN))
-				++m_iMove;
-			Beep(500, 100);
-			break;
-		case 'A': case 'a':
-			if (1 != movecheck(m_vPos.ix - 1, m_vPos.iy, DIR::LEFT))
-				++m_iMove;
-			Beep(500, 100);
-			break;
-		case 'D': case 'd':
-			if (1 != movecheck(m_vPos.ix + 1, m_vPos.iy, DIR::RIGHT))
-				++m_iMove;
-			Beep(500, 100);
-			break;
-
-		default:
-			break;
-		}
-
+	default:
+		break;
 	}
+
+	
 }
 
 

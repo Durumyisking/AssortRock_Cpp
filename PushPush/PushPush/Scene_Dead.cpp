@@ -2,6 +2,9 @@
 #include "Application.h"
 
 CScene_Dead::CScene_Dead()
+	: m_bt(0)
+	, m_ct(0)
+	, m_btRender(0)
 {
 }
 
@@ -15,20 +18,39 @@ void CScene_Dead::Init()
 
 void CScene_Dead::Update()
 {
-	Sleep(3000);
+	m_ct = time(NULL);
 
-	CApplication::GetInst()->SetIsRunning(false);
-
+	if (5 <= m_ct - m_bt)
+	{
+		Sleep(1000);
+		CApplication::GetInst()->SetIsRunning(false);
+	}
 }
 
 void CScene_Dead::Render()
 {
-	SetColor(WINCOLOR::DARK_RED);
-	_SetCursor(12, 5); wcout << L"忙式式式式式式式式式式式式式式式式式式式式式式式忖" << endl;
-	_SetCursor(12, 6); wcout << L"弛      DEAD             弛" << endl;
-	_SetCursor(12, 7); wcout << L"弛            SCENE      弛" << endl;
-	_SetCursor(12, 8); wcout << L"戌式式式式式式式式式式式式式式式式式式式式式式式戎" << endl;
-	_SetCursor(12, 9); wcout << L"       You Are Dead      " << endl;
+	if (1 <= m_ct - m_btRender)
+	{
+		system("cls");
+
+
+		SetColor(WINCOLOR::DARK_RED);
+
+		void* p = new int();
+
+		srand((int)p);
+		int x = rand() % 50;
+
+		srand((int)p);
+		int y = rand() % 20;
+
+		_SetCursor(x, y + 1); wcout << L"ⅥⅥⅥⅥⅥⅥⅥⅥⅥⅥⅥⅥⅥⅥ" << endl;
+		_SetCursor(x, y + 2); wcout << L"Ⅵ       GOOD             Ⅵ" << endl;
+		_SetCursor(x, y + 3); wcout << L"Ⅵ               BYE      Ⅵ" << endl;
+		_SetCursor(x, y + 4); wcout << L"ⅥⅥⅥⅥⅥⅥⅥⅥⅥⅥⅥⅥⅥⅥ" << endl;
+
+		m_btRender = m_ct;
+	}
 }
 
 void CScene_Dead::Destroy()
@@ -38,6 +60,8 @@ void CScene_Dead::Destroy()
 void CScene_Dead::Enter()
 {
 	system("cls");
+	m_bt = time(NULL);
+	m_btRender = time(NULL);
 }
 
 void CScene_Dead::Exit()

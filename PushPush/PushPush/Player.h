@@ -14,9 +14,10 @@ public:
     virtual void Render() override;
 
     int GetMove() const { return m_iMove; }
+    void SetMove(int _iMove) { m_iMove = _iMove; }
 
-private:
-    void inputprocess();
+public:
+    void InputProcess(char _input);
 
 private:
     int m_iMove;

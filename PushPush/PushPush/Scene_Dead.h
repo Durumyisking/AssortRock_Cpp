@@ -15,5 +15,12 @@ public:
 	virtual void Enter() override;
 	virtual void Exit() override;
 
+private:
+	int m_bt;
+	int m_btRender;
+
+	int m_ct;
+
+
 };
 

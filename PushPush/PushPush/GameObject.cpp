@@ -132,7 +132,6 @@ int CGameObject::movecheck(int _x, int _y, DIR _eDir)
 		case DIR::RIGHT:
 			result = pObject->movecheck(_x + 1, _y, _eDir);
 			break;
-
 		case DIR::END:
 			break;
 		default:

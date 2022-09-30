@@ -40,10 +40,10 @@ private:
 		}
 		loadstage.close();
 	};
-
+	void undo();
+	void restart();
 private:
-	CPlayer* m_pPlayer;
-	CStage* m_Stage[7];
+	CStage* m_Stage[STAGECOUNT];
 	
 	int		m_iCurrentStage;
 };
