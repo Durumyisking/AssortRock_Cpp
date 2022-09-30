@@ -18,6 +18,8 @@ CBall::CBall(Pos _vPos)
 	m_strName = L"Ball";
 	m_eColor = WINCOLOR::DARK_BLUE;
 	m_eType = OBJ_TYPE::BALL;
+
+	m_vPrevPos.push_back(_vPos);
 }
 
 

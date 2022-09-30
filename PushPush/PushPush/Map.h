@@ -26,6 +26,7 @@ public:
 
 	CGameObject* GetObj(int _ix, int _iy);
 	CGameObject* GetObj_Move(int _ix, int _iy);
+	vector<CGameObject*>  GetObj(OBJ_TYPE _eType) const { return m_pGameObjects[static_cast<int>(_eType)]; }
 
 	UINT GetBallInHouseCount() const { return m_iBallInHouse; }
 	void SetBallInHouseCount(int _iCount) { m_iBallInHouse = _iCount; }

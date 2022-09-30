@@ -9,6 +9,17 @@ CPlayer::CPlayer()
 	m_eColor = WINCOLOR::VIOLET;
 	m_eType = OBJ_TYPE::PLAYER;
 }
+CPlayer::CPlayer(Pos _vPos)
+	: m_iMove(0)
+{
+	m_vPos = _vPos;
+	m_wcRender = L'¢½';
+	m_strName = L"Player";
+	m_eColor = WINCOLOR::VIOLET;
+	m_eType = OBJ_TYPE::PLAYER;
+	m_vPrevPos.push_back(_vPos);
+
+}
 
 
 void CPlayer::Update()
@@ -29,23 +40,23 @@ void CPlayer::inputprocess()
 		switch (input)
 		{
 		case 'W': case 'w':
-			movecheck(m_vPos.ix, m_vPos.iy - 1, DIR::UP);
-			++m_iMove;
+			if (1 != movecheck(m_vPos.ix, m_vPos.iy - 1, DIR::UP))
+				++m_iMove;
 			Beep(500, 100);
 			break;
 		case 'S': case 's':
-			movecheck(m_vPos.ix, m_vPos.iy + 1, DIR::DOWN);
-			++m_iMove;
+			if (1 != movecheck(m_vPos.ix, m_vPos.iy + 1, DIR::DOWN))
+				++m_iMove;
 			Beep(500, 100);
 			break;
 		case 'A': case 'a':
-			movecheck(m_vPos.ix - 1, m_vPos.iy, DIR::LEFT);
-			++m_iMove;
+			if (1 != movecheck(m_vPos.ix - 1, m_vPos.iy, DIR::LEFT))
+				++m_iMove;
 			Beep(500, 100);
 			break;
 		case 'D': case 'd':
-			movecheck(m_vPos.ix + 1, m_vPos.iy, DIR::RIGHT);
-			++m_iMove;
+			if (1 != movecheck(m_vPos.ix + 1, m_vPos.iy, DIR::RIGHT))
+				++m_iMove;
 			Beep(500, 100);
 			break;
 

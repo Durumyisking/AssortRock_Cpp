@@ -149,8 +149,7 @@ void CMap::CheckMap(int _ix, int _iy, wchar_t _wc)
 {
 	if (L'¢½' == _wc)
 	{
-		m_pPlayer = new CPlayer();
-		m_pPlayer->SetPos(Pos(_ix, _iy));
+		m_pPlayer = new CPlayer(Pos(_ix, _iy));
 		m_pPlayer->SetMap(this);
 		AddGameObject(m_pPlayer);
 	}

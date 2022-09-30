@@ -1,13 +1,18 @@
 #include "GameObject.h"
 #include "Map.h"
 
+int	moveFlag;
+
 CGameObject::CGameObject()
 	: m_vPos() // vector2 생성자에서 초기화 해줘서 안해도 되는데 그냥 일관성을 위해 하는것
 	, m_pMap(nullptr)
 	, m_wcRender(L'\0')
 	, m_eColor(WINCOLOR::BLACK)
 	, m_eType(OBJ_TYPE::END)
+	, m_pMoveFlag(nullptr)
 {
+	m_pMoveFlag = &moveFlag;
+	*m_pMoveFlag = 0;
 }
 
 
@@ -29,6 +34,43 @@ void CGameObject::SetMap(CMap* _pMap) { m_pMap = _pMap; }
 
 void CGameObject::move(DIR _eDir)
 {
+	// 공이 움직이면 이동전에 prev에 위치 넣어줌
+	if (L"Ball" == GetName())
+	{
+		for (int i = 0; i < m_pMap->GetObj(OBJ_TYPE::BALL).size(); i++)
+		{
+			m_pMap->
+				GetObj(OBJ_TYPE::BALL)[i]->
+				m_vPrevPos.push_back(m_pMap->
+					GetObj(OBJ_TYPE::BALL)[i]->
+					GetPos());
+		}
+		*m_pMoveFlag = 1;
+	}
+	// player가 움직이면 이동전에 prev에 위치 넣어줌
+	else if (L"Player" == GetName())
+	{
+		for (int i = 0; i < m_pMap->GetObj(OBJ_TYPE::PLAYER).size(); i++)
+		{
+			m_pMap->
+				GetObj(OBJ_TYPE::PLAYER)[i]->
+				m_vPrevPos.push_back(m_pMap->
+					GetObj(OBJ_TYPE::PLAYER)[i]->
+					GetPos());
+		}
+
+		// Flag가 0이면 공위치 pushback
+		if (0 == *m_pMoveFlag)
+		{
+			for (int i = 0; i < m_pMap->GetObj(OBJ_TYPE::BALL).size(); i++)
+			{
+				CGameObject* pTemp = m_pMap->GetObj(OBJ_TYPE::BALL)[i];
+				pTemp->m_vPrevPos.push_back(pTemp->GetPos());
+			}
+		}
+		*m_pMoveFlag = 0;
+	}
+
 	switch (_eDir)
 	{
 	case DIR::UP:

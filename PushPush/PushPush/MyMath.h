@@ -22,4 +22,11 @@ public:
 		this->iy = _vOther.iy;
 		return *this;
 	}
+	bool operator==(Vector2 _vOther)
+	{
+		if(this->ix == _vOther.ix && this->iy == _vOther.iy)
+			return true;
+
+		return false;
+	}
 }Pos;

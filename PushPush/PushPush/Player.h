@@ -8,7 +8,7 @@ class CPlayer :
 {
 public:
     CPlayer();
-
+    CPlayer(Pos _vPos);
 public:
     virtual void Update() override;
     virtual void Render() override;

@@ -17,6 +17,8 @@ CHouse::CHouse(Pos _vPos)
 	m_strName = L"House";
 	m_eColor = WINCOLOR::WHITE;
 	m_eType = OBJ_TYPE::HOUSE;
+
+	m_vPrevPos.push_back(_vPos);
 }
 
 

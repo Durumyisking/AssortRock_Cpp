@@ -48,6 +48,20 @@ void CScene_Play::Update()
 		case 'm': case 'M':
 			load();
 			break;
+		case 'q': case 'Q':
+			//Beep(3000, 100);
+			// undo
+			for (int i = 0; i < m_pMap[m_iCurrentStage]->GetObj(OBJ_TYPE::PLAYER).size(); i++)
+			{
+				CGameObject* pTemp = m_pMap[m_iCurrentStage]->GetObj(OBJ_TYPE::PLAYER)[i];
+				pTemp->SetPos(pTemp->GetPrevPos());
+			}
+			for (int i = 0; i < m_pMap[m_iCurrentStage]->GetObj(OBJ_TYPE::BALL).size(); i++)
+			{
+				CGameObject* pTemp = m_pMap[m_iCurrentStage]->GetObj(OBJ_TYPE::BALL)[i];
+				pTemp->SetPos(pTemp->GetPrevPos());				
+			}	
+			break;
 		default:
 			break;
 		}
@@ -64,7 +78,7 @@ void CScene_Play::Render()
 	_SetCursor(PRINT_GAP_X, (y + 5)); wcout << L"戌式式式式式式式式式式式式式式式式式式式式式式式戎" << endl;
 
 	SetColor(WINCOLOR::DARK_GREEN);
-	_SetCursor((PRINT_GAP_X - 35), y++); printf("[ Backspace ] : undo\n");
+	_SetCursor((PRINT_GAP_X - 35), y++); printf("[ Q ] : undo\n");
 	_SetCursor((PRINT_GAP_X - 35), y++); printf("[ Reset ] : R \n");
 	_SetCursor((PRINT_GAP_X - 35), y++); printf("[ Esc ] : Exit \n");
 	SetColor(WINCOLOR::BLUE);
@@ -125,6 +139,8 @@ void CScene_Play::initmap()
 		m_pMap[i] = m_Stage[i]->Load(i + 1);
 		m_pMap[i]->Init();
 		m_pPlayer = m_pMap[i]->GetPlayer();
+
+
 	}	
 }
 
