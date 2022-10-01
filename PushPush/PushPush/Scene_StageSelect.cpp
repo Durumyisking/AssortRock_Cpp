@@ -79,6 +79,7 @@ void CScene_StageSelect::Render()
 	SetColor(WINCOLOR::WHITE);
 	_SetCursor(PRINT_GAP_X - 7, (15 + m_iArrowLine));	 wcout << L"¢º";
 
+	delete p;
 }
 
 void CScene_StageSelect::Destroy()

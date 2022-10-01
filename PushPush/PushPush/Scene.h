@@ -22,7 +22,8 @@ public:
 
 
 protected:
-	CMap* m_pMap[EASYSTAGE + HARDSTAGE];
+	// easy개수 hard개수 + 튜토리얼스테이지
+	CMap* m_pMap[EASYSTAGE + HARDSTAGE + 1];
 	STAGE_TYPE g_eCurrentDifficulty;
 
 };

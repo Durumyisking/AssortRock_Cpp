@@ -24,7 +24,7 @@ void CScene_Clear::Update()
 		switch (chInput)
 		{
 		case '\r':
-			CApplication::GetInst()->ChangeScene(SCENE_TYPE::PLAY);
+				CApplication::GetInst()->ChangeScene(SCENE_TYPE::PLAY);
 			break;
 		default:
 			break;
@@ -44,6 +44,8 @@ void CScene_Clear::Render()
 	_SetCursor(PRINT_GAP_X, (13));	 wcout << L"弛                       弛" << endl;
 	_SetCursor(PRINT_GAP_X, (14));	 wcout << L"戌式式式式式式式式式式式式式式式式式式式式式式式戎" << endl;
 	_SetCursor(PRINT_GAP_X, (15));   wcout <<  L"   Enter ====> NextStage " << endl;
+
+	delete p;
 }
 
 void CScene_Clear::Destroy()

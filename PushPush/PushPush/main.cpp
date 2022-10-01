@@ -21,6 +21,8 @@ CApplication application;
 
 int main()
 {
+	//_CrtSetBreakAlloc(2412);
+
 	setlocale(LC_ALL, "");
 	application.GetInst()->Init();				//	1. init
 	// 인트로 음악 재생

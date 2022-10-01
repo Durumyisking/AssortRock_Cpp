@@ -92,8 +92,9 @@
     <ClCompile Include="Scene_StageSelect.cpp">
       <Filter>Scene</Filter>
     </ClCompile>
-    <ClCompile Include="Scene_Tutorial.cpp" />
-    <ClCompile Include="Scene_Ending.cpp" />
+    <ClCompile Include="Scene_Ending.cpp">
+      <Filter>Scene</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Application.h">
@@ -162,7 +163,8 @@
     <ClInclude Include="Scene_StageSelect.h">
       <Filter>Scene</Filter>
     </ClInclude>
-    <ClInclude Include="Scene_Tutorial.h" />
-    <ClInclude Include="Scene_Ending.h" />
+    <ClInclude Include="Scene_Ending.h">
+      <Filter>Scene</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

@@ -32,7 +32,6 @@ enum class SCENE_TYPE
 {
 	INTRO,
 	TITLE,
-	TUTORIAL,
 	STAGE_SELECT,
 	PLAY,
 	CLEAR,

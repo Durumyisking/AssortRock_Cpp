@@ -50,6 +50,8 @@ void CScene_Dead::Render()
 		_SetCursor(x, y + 4); wcout << L"¢¾¢¾¢¾¢¾¢¾¢¾¢¾¢¾¢¾¢¾¢¾¢¾¢¾¢¾" << endl;
 
 		m_btRender = m_ct;
+
+		delete p;
 	}
 }
 

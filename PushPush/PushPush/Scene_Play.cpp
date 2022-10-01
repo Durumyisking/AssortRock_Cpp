@@ -9,6 +9,7 @@ CScene_Play::CScene_Play()
 	: m_StageEasy{}
 	, m_StageHard{}
 	, m_iCurrentStage(0)
+	, m_bFirstStart(true)
 {
 }
 
@@ -37,21 +38,23 @@ void CScene_Play::Update()
 {
 	m_pMap[m_iCurrentStage]->Update();
 
-	// 클리어 확인
+	// 클리어 확인 
 	if (m_pMap[m_iCurrentStage]->IsClear())
+	{
+		CApplication::GetInst()->ChangeScene(SCENE_TYPE::CLEAR);
 		++m_iCurrentStage;
+	}
 
-
-	if (STAGE_TYPE::EASY == g_eCurrentDifficulty)	
+	if (STAGE_TYPE::EASY == g_eCurrentDifficulty)
+	{
 		if (EASYSTAGE <= m_iCurrentStage)
 			CApplication::GetInst()->ChangeScene(SCENE_TYPE::ENDING);
-
+	}
 	else if (STAGE_TYPE::HARD == g_eCurrentDifficulty)
+	{
 		if (HARDSTAGE + EASYSTAGE <= m_iCurrentStage)
 			CApplication::GetInst()->ChangeScene(SCENE_TYPE::ENDING);
-
-
-
+	}
 
 	if (_kbhit())
 	{
@@ -95,8 +98,7 @@ void CScene_Play::Update()
 			restart();
 			break;
 		case 't': case 'T':
-			restart();
-			CApplication::GetInst()->ChangeScene(SCENE_TYPE::TITLE);
+			GotoDifficultySelect();
 			break;
 		case 27 : // esc(ASCII 27)키 눌렀을때 프로그램 종료
 			CApplication::GetInst()->ChangeScene(SCENE_TYPE::DEAD);
@@ -110,12 +112,23 @@ void CScene_Play::Update()
 void CScene_Play::Render()
 {
 	int y = 3;
-	SetColor(WINCOLOR::DARK_SKY_BLUE);
-	_SetCursor(PRINT_GAP_X, (y + 2));				wcout << L"┌───────────────────────┐"<< endl;
+
+	int stage = m_iCurrentStage + 1;
+	if (STAGE_TYPE::EASY == g_eCurrentDifficulty)
+	{
+		SetColor(WINCOLOR::DARK_SKY_BLUE);
+	}
+	else if (STAGE_TYPE::HARD == g_eCurrentDifficulty)
+	{
+		SetColor(WINCOLOR::DARK_RED);
+		stage -= EASYSTAGE;
+	}
+	_SetCursor(PRINT_GAP_X, (y + 2));				wcout << L"┌───────────────────────┐" << endl;
 	_SetCursor(PRINT_GAP_X, (y + 3));				wcout << L"│         Stage";
-	_SetCursor(PRINT_GAP_X + 15, (y + 3));			wcout <<      m_iCurrentStage + 1;
-	_SetCursor(PRINT_GAP_X + 16, (y + 3));			wcout <<                L"        │" << endl;
-	_SetCursor(PRINT_GAP_X, (y + 4));				wcout << L"└───────────────────────┘"<< endl;
+	_SetCursor(PRINT_GAP_X + 15, (y + 3));			wcout << stage;
+	_SetCursor(PRINT_GAP_X + 16, (y + 3));			wcout << L"        │" << endl;
+	_SetCursor(PRINT_GAP_X, (y + 4));				wcout << L"└───────────────────────┘" << endl;
+
 
 	SetColor(WINCOLOR::DARK_GREEN);
 	_SetCursor((PRINT_GAP_X - 35), y++); printf("[ Q ] : undo\n");
@@ -123,7 +136,7 @@ void CScene_Play::Render()
 	_SetCursor((PRINT_GAP_X - 35), y++); printf("[ Esc ] : Exit \n"); // 프로그램 종료
 	SetColor(WINCOLOR::BLUE);
 	y++;
-	_SetCursor((PRINT_GAP_X - 35), y++); printf("[ T ] : Go to Title\n"); //타이틀씬으로
+	_SetCursor((PRINT_GAP_X - 35), y++); printf("[ T ] : Difficulty Select\n"); // 난이도 선택창으로
 
 
 	SetColor(WINCOLOR::GRAY);
@@ -139,7 +152,17 @@ void CScene_Play::Render()
 	SetColor(WINCOLOR::WHITE); 
 	_SetCursor((PRINT_GAP_X + 35), y); printf("[ MOVE ] : ");
 	SetColor(WINCOLOR::GREEN);
-	_SetCursor((PRINT_GAP_X + 47), y++); printf("%d", m_pMap[m_iCurrentStage]->GetPlayer()->GetMove());
+
+	int move = m_pMap[m_iCurrentStage]->GetPlayer()->GetMove();
+	if (0 == move / 10)
+	{
+		_SetCursor((PRINT_GAP_X + 47), y++); printf("0%d  ", m_pMap[m_iCurrentStage]->GetPlayer()->GetMove());
+	}
+	else
+	{
+		_SetCursor((PRINT_GAP_X + 47), y++); printf("%d  ", m_pMap[m_iCurrentStage]->GetPlayer()->GetMove());
+	}
+
 	SetColor(WINCOLOR::DARK_BLUE);
 	_SetCursor((PRINT_GAP_X + 36), y + 3); printf("[ N ] : Save");
 	_SetCursor((PRINT_GAP_X + 36), y + 4); printf("[ M ] : Load");
@@ -161,17 +184,22 @@ void CScene_Play::Destroy()
 void CScene_Play::Enter()
 {
 
-	if (g_eCurrentDifficulty == STAGE_TYPE::EASY)
-		m_iCurrentStage = 0;
-	if (g_eCurrentDifficulty == STAGE_TYPE::HARD)
-		m_iCurrentStage = 4;
+	if (m_bFirstStart)
+	{
+		if (g_eCurrentDifficulty == STAGE_TYPE::EASY)
+			m_iCurrentStage = 0;
+		if (g_eCurrentDifficulty == STAGE_TYPE::HARD)
+			m_iCurrentStage = 6;
 
+		m_bFirstStart = false;
+	}
 	PlaySoundA("..\\Sounds\\ingame.wav", 0, SND_FILENAME | SND_ASYNC | SND_LOOP);
 	system("cls");
 }
 
 void CScene_Play::Exit()
 {
+	PlaySound(NULL, NULL, SND_PURGE | SND_NOWAIT | SND_ASYNC);
 	system("cls");
 }
 
@@ -179,7 +207,6 @@ void CScene_Play::Exit()
 void CScene_Play::initmap()
 {
 	// stage메모장 파일을 읽어서 그걸 맵으로 쓸꺼임
-
 
 	for (int i = 0; i < EASYSTAGE; ++i)
 	{
@@ -193,6 +220,7 @@ void CScene_Play::initmap()
 		m_pMap[i + EASYSTAGE] = m_StageHard[i]->Load(STAGE_TYPE::HARD, i + 1);
 		m_pMap[i + EASYSTAGE]->Init();
 	}
+
 }
 
 /** player과 Ball의 현재 pos를 prevpos로 */
@@ -226,8 +254,17 @@ void CScene_Play::restart()
 	}
 	else if (STAGE_TYPE::HARD == g_eCurrentDifficulty)
 	{
-		m_pMap[m_iCurrentStage + EASYSTAGE] = m_StageHard[m_iCurrentStage]->Load(STAGE_TYPE::HARD, m_iCurrentStage + 1);
-		m_pMap[m_iCurrentStage + EASYSTAGE]->Init();
+		m_pMap[m_iCurrentStage] = m_StageHard[m_iCurrentStage - EASYSTAGE]->Load(STAGE_TYPE::HARD, m_iCurrentStage - EASYSTAGE + 1);
+		m_pMap[m_iCurrentStage]->Init();
 	}
+
+}
+
+void CScene_Play::GotoDifficultySelect()
+{
+	initmap();
+	m_bFirstStart = true;
+	CApplication::GetInst()->ChangeScene(SCENE_TYPE::STAGE_SELECT);
+
 }
 
