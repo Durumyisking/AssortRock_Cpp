@@ -189,7 +189,7 @@ void CScene_Play::Enter()
 		if (g_eCurrentDifficulty == STAGE_TYPE::EASY)
 			m_iCurrentStage = 0;
 		if (g_eCurrentDifficulty == STAGE_TYPE::HARD)
-			m_iCurrentStage = 6;
+			m_iCurrentStage = EASYSTAGE;
 
 		m_bFirstStart = false;
 	}
