@@ -1,5 +1,2 @@
-﻿  Note.cpp
-C:\Users\csh\Documents\GitHub\AssortRock_44th\Durumyisking\Durumyisking\Note.cpp(31,22): warning C4267: '=': 'size_t'에서 'char'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\Users\csh\Documents\GitHub\AssortRock_44th\Durumyisking\Durumyisking\Note.cpp(65,23): warning C4267: '=': 'size_t'에서 'char'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\Users\csh\Documents\GitHub\AssortRock_44th\Durumyisking\Durumyisking\Note.cpp(98,6): warning C4101: 'iInput' :참조되지 않은 지역 변수입니다.
+﻿  BFS.cpp
   Durumyisking.vcxproj -> C:\Users\csh\Documents\GitHub\AssortRock_44th\Durumyisking\x64\Debug\Durumyisking.exe

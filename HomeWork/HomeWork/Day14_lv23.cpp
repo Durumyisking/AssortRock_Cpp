@@ -152,6 +152,7 @@ void BBQ_6(int _level)
 	{
 		for (size_t i = 1; i < 4; i++)
 		{
+
 			if ((3 < path[i - 1] - path[i]) || (-3 > path[i - 1] - path[i]))
 			{
 				return;
@@ -173,72 +174,72 @@ int main()
 
 	// Level
 
-	// 1번
-	{
-		cout << "///////////////1번///////////////" << endl;
-		for (size_t i = 0; i < 4; i++)
-		{
-			cin >> name[i];
-		}
-		BBQ_1(0);
-	}
+	//// 1번
+	//{
+	//	cout << "///////////////1번///////////////" << endl;
+	//	for (size_t i = 0; i < 4; i++)
+	//	{
+	//		cin >> name[i];
+	//	}
+	//	BBQ_1(0);
+	//}
 
-	// 2번
-	{
-		cout << "///////////////2번///////////////" << endl;
-		// 이전인덱스가 B면 Tpass T면 BPASS
-		for (size_t i = 0; i < 4; i++)
-		{
-			cin >> name[i];
-		}
-		BBQ_2(0);
-		cout << iCount << endl;
-	}
+	//// 2번
+	//{
+	//	cout << "///////////////2번///////////////" << endl;
+	//	// 이전인덱스가 B면 Tpass T면 BPASS
+	//	for (size_t i = 0; i < 4; i++)
+	//	{
+	//		cin >> name[i];
+	//	}
+	//	BBQ_2(0);
+	//	cout << iCount << endl;
+	//}
 
-	// 3번
-	{
-		cout << "///////////////3번///////////////" << endl;
-		iCount = 0;
-		for (size_t i = 0; i < 255; i++)
-		{
-			Bucket[i] = 0;
-		}
-		int input;
-		cin >> input;
-		BBQ_3(0, input);
-		cout << iCount<<endl;
-	}
+	//// 3번
+	//{
+	//	cout << "///////////////3번///////////////" << endl;
+	//	iCount = 0;
+	//	for (size_t i = 0; i < 255; i++)
+	//	{
+	//		Bucket[i] = 0;
+	//	}
+	//	int input;
+	//	cin >> input;
+	//	BBQ_3(0, input);
+	//	cout << iCount<<endl;
+	//}
 
-	// 4번
-	{
-		cout << "///////////////4번///////////////" << endl;
-		int input;
-		iCount = 0;
-		for (size_t i = 0; i < 255; i++)
-		{
-			Bucket[i] = 0;
-		}
-		cin >> input;
-		BBQ_4(0, input);
-		cout << iCount << endl;
+	//// 4번
+	//{
+	//	cout << "///////////////4번///////////////" << endl;
+	//	int input;
+	//	iCount = 0;
+	//	for (size_t i = 0; i < 255; i++)
+	//	{
+	//		Bucket[i] = 0;
+	//	}
+	//	cin >> input;
+	//	BBQ_4(0, input);
+	//	cout << iCount << endl;
 
-	}
+	//}
 
-	// 5번
-	{
-		cout << "///////////////5번///////////////" << endl;
-		for (size_t i = 0; i < 255; i++)
-		{
-			Bucket[i] = 0;
-		}
-		for (size_t i = 0; i < 5; i++)
-		{
-			path[i] = '\0';
-		}
-		char input;
-		cin >> input;
-		BBQ_5(0, input);
-	}
+	//// 5번
+	//{
+	//	cout << "///////////////5번///////////////" << endl;
+	//	for (size_t i = 0; i < 255; i++)
+	//	{
+	//		Bucket[i] = 0;
+	//	}
+	//	for (size_t i = 0; i < 5; i++)
+	//	{
+	//		path[i] = '\0';
+	//	}
+	//	char input;
+	//	cin >> input;
+	//	BBQ_5(0, input);
+	//}
 
 	// 6번
 	{

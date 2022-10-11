@@ -16,6 +16,9 @@
     <Filter Include="NewFilter1">
       <UniqueIdentifier>{cf5a28f6-5c33-405b-9dec-b2fdbb98c344}</UniqueIdentifier>
     </Filter>
+    <Filter Include="소스 파일\Algorithm">
+      <UniqueIdentifier>{316c4720-cdf7-447d-b7f2-a24d481e43ee}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="01_Debug.cpp">
@@ -80,6 +83,12 @@
     </ClCompile>
     <ClCompile Include="Note.cpp">
       <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="BFS.cpp">
+      <Filter>소스 파일\Algorithm</Filter>
+    </ClCompile>
+    <ClCompile Include="DFS.cpp">
+      <Filter>소스 파일\Algorithm</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

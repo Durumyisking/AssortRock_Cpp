@@ -246,7 +246,7 @@ int main()
 			cin >> input;
 			vec.push_back(input);
 		}
-		dc(vec);
+		DC(vec);
 //		bbq_5(vec, 0, vec.size());
 		for (size_t i = 0; i < vec.size(); i++)
 		{

@@ -3,8 +3,8 @@
 #define PRINT_GAP_X 48
 #define PRINT_GAP_Y 3
 
-#define EASYSTAGE 4
-#define HARDSTAGE 3
+#define EASYSTAGE 5
+#define HARDSTAGE 5
 
 
 
