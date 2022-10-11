@@ -90,6 +90,9 @@
     <ClCompile Include="DFS.cpp">
       <Filter>소스 파일\Algorithm</Filter>
     </ClCompile>
+    <ClCompile Include="BST.cpp">
+      <Filter>소스 파일\Algorithm</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="03.Operator.cpp">

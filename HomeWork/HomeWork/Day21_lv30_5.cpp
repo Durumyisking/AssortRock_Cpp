@@ -4,6 +4,8 @@ using namespace std;
 
 char path[10] = { };
 char name[10] = {};
+int five[5] = {};
+
 vector<int> result;
 
 
@@ -55,7 +57,9 @@ void BBQ_6(int _lv, char* pwd, int* rst)
 {	
 	if (_lv == 4)
 	{
-		int k = 0;;
+		++(*rst);
+
+		int k = 0;
 		for (size_t i = 0; i < 4; i++)
 		{
 			if (pwd[i] == path[i])
@@ -64,10 +68,8 @@ void BBQ_6(int _lv, char* pwd, int* rst)
 		if (4 == k)
 		{
 			result.push_back(*rst);
-			*rst = 0;
 			return;
 		}
-		++(*rst);
 		return;	
 	}
 
@@ -81,126 +83,144 @@ void BBQ_6(int _lv, char* pwd, int* rst)
 }
 ////////////////////////////////////////////
 
+// 7번함수
+////////////////////////////////////////////
+void BBQ_7(int* cnt, int* sum, int _lv = 0)
+{
+	if (5 == _lv)
+	{
+		if (*sum >= 10 && *sum <= 20)
+			++(*cnt);
+		return;
+	}
+	
+	*sum += five[_lv];
+	BBQ_7(cnt, sum, _lv + 1);
+	*sum -= five[_lv];
+	BBQ_7(cnt, sum, _lv + 1);
+
+}
+////////////////////////////////////////////
 int main()
 {
 
 	// Level
 
-	//// 1번 질문
-	//{
-	//	cout << "///////////////1번///////////////" << endl;
-	//	int arr[2][2] = {
-	//		{12, 9},
-	//		{3,  6}
-	//	}; // 90 : 9 6 12 3
-	//	// 90으로 나눈 몫을 4로 나눠야함
-	//	int angle;
-	//	cin >> angle;
-	//	int rep = (angle / 90) % 4;
-	//	for (size_t i = 0; i < rep; i++)
-	//	{
-	//		int result[2][2] = {};
+	// 1번 질문
+	{
+		cout << "///////////////1번///////////////" << endl;
+		int arr[2][2] = {
+			{12, 9},
+			{3,  6}
+		}; // 90 : 9 6 12 3
+		// 90으로 나눈 몫을 4로 나눠야함
+		int angle;
+		cin >> angle;
+		int rep = (angle / 90) % 4;
+		for (size_t i = 0; i < rep; i++)
+		{
+			int result[2][2] = {};
 
-	//		result[0][0] = arr[0][1];
-	//		result[0][1] = arr[1][1];
-	//		result[1][1] = arr[1][0];
-	//		result[1][0] = arr[0][0];
+			result[0][0] = arr[0][1];
+			result[0][1] = arr[1][1];
+			result[1][1] = arr[1][0];
+			result[1][0] = arr[0][0];
 
-	//		arr[0][0] = result[0][0];
-	//		arr[0][1] = result[0][1];
-	//		arr[1][1] = result[1][1];
-	//		arr[1][0] = result[1][0];
-	//	}
-	//	for (size_t i = 0; i < 2; i++)
-	//	{
-	//		for (size_t j = 0; j < 2; j++)
-	//		{
-	//			cout << arr[i][j] << " ";
-	//		}
-	//	}
-	//	cout << endl;
-	//}
+			arr[0][0] = result[0][0];
+			arr[0][1] = result[0][1];
+			arr[1][1] = result[1][1];
+			arr[1][0] = result[1][0];
+		}
+		for (size_t i = 0; i < 2; i++)
+		{
+			for (size_t j = 0; j < 2; j++)
+			{
+				cout << arr[i][j] << " ";
+			}
+		}
+		cout << endl;
+	}
 
-	//// 2번
-	//{
-	//	cout << "///////////////2번///////////////" << endl;
-	//	int input = 0;
-	//	cin >> input;
-	//	BBQ_2(0, input);
-	//}
+	// 2번
+	{
+		cout << "///////////////2번///////////////" << endl;
+		int input = 0;
+		cin >> input;
+		BBQ_2(0, input);
+	}
 
-	//// 3번
-	//{
-	//	cout << "///////////////3번///////////////" << endl;
-	//	int arr[6] = { 1,5,4,2,-5,-7 };
-	//	int input = 0;
-	//	cin >> input;
-	//	int result[6] = {};
-	//	int idx = 0;
-	//	result[0] = arr[0];
-	//	for (size_t i = 1; i < 6; i++)
-	//	{
-	//		if (result[idx] < arr[i])
-	//		{
-	//			int temp = result[idx];
-	//			result[idx] = arr[i];
-	//			result[idx + 1] = temp;
-	//			idx = i;
-	//		}
-	//		else
-	//		{
-	//			result[i] = arr[i];
-	//		}
-	//	}
-	//	cout << result[input - 1] << endl;
-	//}
+	// 3번
+	{
+		cout << "///////////////3번///////////////" << endl;
+		int arr[6] = { 1,5,4,2,-5,-7 };
+		int input = 0;
+		cin >> input;
+		int result[6] = {};
+		int idx = 0;
+		result[0] = arr[0];
+		for (size_t i = 1; i < 6; i++)
+		{
+			if (result[idx] < arr[i])
+			{
+				int temp = result[idx];
+				result[idx] = arr[i];
+				result[idx + 1] = temp;
+				idx = i;
+			}
+			else
+			{
+				result[i] = arr[i];
+			}
+		}
+		cout << result[input - 1] << endl;
+	}
 
-	//// 4번
-	//{
-	//	cout << "///////////////4번///////////////" << endl;	
-	//	string arr[3] = {};
-	//	int bigsize = 0;
-	//	int big = 0;
-	//	vector<int> bigidx;
-	//	for (size_t i = 0; i < 3; i++)
-	//	{
-	//		cin >> arr[i];
-	//		if (arr[i].size() >= bigsize)
-	//		{
-	//			bigsize = arr[i].size();
-	//			bigidx.push_back(i);
-	//		}
-	//	}
-	//	for (size_t i = 0; i < bigidx.size() - 1; i++)
-	//	{
-	//		for (size_t j = i; j < bigidx.size(); j++)
-	//		{
-	//			int r = arr[bigidx[i]].compare(arr[bigidx[j]]);
+	// 4번
+	{
+		cout << "///////////////4번///////////////" << endl;	
+		string arr[3] = {};
+		int bigsize = 0;
+		int big = 0;
+		vector<int> bigidx;
+		for (size_t i = 0; i < 3; i++)
+		{
+			cin >> arr[i];
+			if (arr[i].size() >= bigsize)
+			{
+				bigsize = arr[i].size();
+				bigidx.push_back(i);
+			}
+		}
+		for (size_t i = 0; i < bigidx.size() - 1; i++)
+		{
+			for (size_t j = i; j < bigidx.size(); j++)
+			{
+				int r = arr[bigidx[i]].compare(arr[bigidx[j]]);
 
-	//			if (1 == r)
-	//				big = bigidx[i];
-	//			else if (-1 == r)
-	//				big = bigidx[j];
-	//		}
-	//	}
-	//	cout << arr[big] << endl;		
-	//}
+				if (1 == r)
+					big = bigidx[i];
+				else if (-1 == r)
+					big = bigidx[j];
+			}
+		}
+		cout << arr[big] << endl;		
+	}
 
-	//// 5번
-	//{
-	//	cout << "///////////////5번///////////////" << endl;
-	//	cin >> name;
-	//	int cnt = 0;
-	//	cin >> cnt;
-	//	int size = 0;
-	//	for (size_t i = 0; i < 10; i++)
-	//	{
-	//		if ('\0' == name[i])
-	//			break;
-	//		++size;
-	//	}
-	//	BBQ_5(0, cnt, size);
-	//}
+	// 5번
+	{
+		cout << "///////////////5번///////////////" << endl;
+		cin >> name;
+		int cnt = 0;
+		cin >> cnt;
+		int size = 0;
+		for (size_t i = 0; i < 10; i++)
+		{
+			if ('\0' == name[i])
+				break;
+			++size;
+		}
+		BBQ_5(0, cnt, size);
+	}
 
 	// 6번
 	{
@@ -216,6 +236,7 @@ int main()
 		}
 		for (size_t i = 0; i < cnt; i++)
 		{
+			rst = 0;
 			cin >> pwd[i];
 			BBQ_6(0, pwd[i],  &rst);
 		}
@@ -228,14 +249,57 @@ int main()
 	// 7번
 	{
 		cout << "///////////////7번///////////////" << endl;
-
+		int cnt = 0;
+		int sum = 0;
+		for (size_t i = 0; i < 5; i++)
+		{
+			cin >> five[i];
+		}
+		BBQ_7(&cnt, &sum);
+		cout << cnt << endl;
 	}
 
 	// 8번
 	{
 		cout << "///////////////8번///////////////" << endl;
+		string hero = "BIAH";
+		string temp;
+	
+		char _path[5] = {};
+		int count = 0;
+		int input;
+		cin >> input;
+		for (size_t k = 0; k < 4; k++)
+		{
+			for (size_t i = 0; i < input; i++)
+			{
+				if (i == input - 1)
+				{
+					temp.clear();
+					_path[count++] = hero[i % hero.size()];
+					int idx = i % hero.size();
 
+					hero.erase(remove(hero.begin(),
+						hero.end(), hero[i % hero.size()]));
+					for (size_t i = idx; i < idx + hero.size(); i++)
+					{
+						int t = i;
+						if (t >= hero.size())
+						{
+							t = i % hero.size();
+						}
+						temp.push_back(hero[t]);
+					}
+					hero = temp;
+
+				}
+			}
+		}
+	
+		cout << _path << endl;
+			
 	}
+
 
 	// 9번
 	{
