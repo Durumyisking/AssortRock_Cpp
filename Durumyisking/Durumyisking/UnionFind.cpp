@@ -40,12 +40,29 @@ void insert(char a, char b)
 
 }
 
+char parent[200];
+char getParent(char ch)
+{
+	if (parent[ch] == 0) return ch;
+	int ret = getParent(parent[ch]);
+	parent[ch] = ret; // 이걸로 최적화 가능
+	return ret;
+}
+
+void insert_R(char ch1, char ch2)
+{
+	int a = getParent(ch1);
+	int b = getParent(ch2);
+	if (a != b) parent[b] = a;
+}
+
 int main()
 {
-
-
-
-
+	insert_R('A', 'G');
+	insert_R('H', 'C');
+	insert_R('A', 'H');
+	insert_R('F', 'D');
+	insert_R('A', 'F');
 
 	return 0;
 }

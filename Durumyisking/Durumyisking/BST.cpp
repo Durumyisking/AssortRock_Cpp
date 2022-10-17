@@ -50,6 +50,7 @@ int main()
 	insert(2);
 	insert(7);
 	insert(4);
+
 	search(4);
 
 	return 0;
